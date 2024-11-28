@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
     private PlayerInput playerinput;
     private Vector3 lookVector;
     private Vector2 moveDirection2d;
+
     public Transform CameraBoom_Transform;
+   
 
     private void Awake()
     {
@@ -33,6 +35,8 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookVector), 0.5f);
         }
+
+       // transform.position = new Vector3(0, -1, 0);
     }
 
 
