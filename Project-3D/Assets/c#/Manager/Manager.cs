@@ -8,6 +8,18 @@ public class Manager : MonoBehaviour
 
     public static Manager manager;
 
+
+    UIManager ui = new UIManager();
+    ResourcesManager resourcesManager = new ResourcesManager();
+    SceneManagerEx scenemanager = new SceneManagerEx();
+    SoundManager soundManager = new SoundManager();
+
+    public static UIManager UI { get { return manager.ui; } }
+    public static ResourcesManager RESOURCES { get { return manager.resourcesManager; } }
+
+    public static SceneManagerEx SCENEMANAGER { get { return manager.scenemanager; } }
+
+    public static SoundManager SOUNDMANAGER { get { return manager.soundManager; } }
     static void Init() {
 
         manager = FindObjectOfType<Manager>();
