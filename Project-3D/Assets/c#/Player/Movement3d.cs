@@ -28,6 +28,8 @@ public class Movement3d : MonoBehaviour
         playerinput.Player.Movement.performed += ActiveMovement;
         playerinput.Player.Movement.canceled += ActiveMovement;
 
+        
+
     }
 
     
@@ -35,6 +37,8 @@ public class Movement3d : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
+
+        cam = Camera.main.transform;
     }
 
     public void ActiveMovement(InputAction.CallbackContext value)

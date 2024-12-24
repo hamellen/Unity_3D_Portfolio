@@ -23,6 +23,7 @@ public class Manager : MonoBehaviour
     static void Init() {
 
         manager = FindObjectOfType<Manager>();
+        manager.soundManager.Init();
     }
 
 
@@ -42,5 +43,12 @@ public class Manager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public static void Clear() {
+
+        SOUNDMANAGER.Clear();
+        SCENEMANAGER.Clear();
+
     }
 }
