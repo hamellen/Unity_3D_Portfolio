@@ -1,45 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Movement3d : MonoBehaviour
 {
 
 
-   
+
     private PlayerInput playerinput;
-    private Rigidbody rb;
+    public Rigidbody rb;
     private Vector2 moveDirection2d;
 
     public Transform cam;
     public float movespeed = 5.0f;
     private Animator animator;
-   
 
-    public float turnSmoothTime=0.1f;
+
+    public float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
     private void Awake()
     {
         playerinput = new PlayerInput();
-        playerinput.Player.Enable();
+
 
         playerinput.Player.Movement.started += ActiveMovement;
         playerinput.Player.Movement.performed += ActiveMovement;
-        playerinput.Player.Movement.canceled += ActiveMovement;
+        playerinput.Player.Movement.canceled += ActiveMovementEnd;
 
-        
+
 
     }
+    private void OnEnable()
+    {
+        playerinput.Player.Movement.Enable();
+    }
 
-    
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponent<Animator>();
 
         cam = Camera.main.transform;
     }
+
+    public void ActiveMovementEnd(InputAction.CallbackContext value) {
+
+        moveDirection2d = new Vector2(0, 0);
+    } 
 
     public void ActiveMovement(InputAction.CallbackContext value)
     {
@@ -61,9 +71,11 @@ public class Movement3d : MonoBehaviour
         //rb.MovePosition(rb.position + movevector * movespeed * Time.deltaTime);//rigidbody 객체는 사실상 해당 함수 사용
         //transform.Translate(movevector * Time.deltaTime*movespeed, Space.World);//물리작용이 필요없는 오브젝트에서 사용
 
+
+        //moveDirection2d = new Vector2(0, 0);
         Vector3 direction = new Vector3(moveDirection2d.x, 0f, moveDirection2d.y).normalized;
 
-        if (direction.magnitude >= 0.01f)
+        if (direction.magnitude >= 0.1f)
         {
 
             animator.SetBool("IsRunning", true);

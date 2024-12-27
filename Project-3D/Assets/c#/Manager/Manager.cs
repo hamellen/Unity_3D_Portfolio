@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
 
-    public static Manager manager;
+     static Manager manager;
+      //public static Manager managers { get {  return manager; } }
 
+
+    //PlayerInput playerinput = new PlayerInput();
 
     UIManager ui = new UIManager();
     ResourcesManager resourcesManager = new ResourcesManager();
@@ -15,6 +19,10 @@ public class Manager : MonoBehaviour
     SoundManager soundManager = new SoundManager();
 
     public static UIManager UI { get { return manager.ui; } }
+
+    //public static PlayerInput inputActions { get { return managers.playerinput; } }
+
+
     public static ResourcesManager RESOURCES { get { return manager.resourcesManager; } }
 
     public static SceneManagerEx SCENEMANAGER { get { return manager.scenemanager; } }
@@ -26,11 +34,15 @@ public class Manager : MonoBehaviour
         manager.soundManager.Init();
     }
 
+    private void OnEnable()
+    {
+        //playerinput.Enable();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        Init();
+        Init();//static  함수 
         if (manager != null)
         {
             Debug.Log("매니저 로드 성공");

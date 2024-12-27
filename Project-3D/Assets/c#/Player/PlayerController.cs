@@ -6,44 +6,36 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
 
-    private PlayerInput playerinput;
-    private Vector3 lookVector;
-    private Vector2 moveDirection2d;
+    private Animator animator;
 
-    public Transform CameraBoom_Transform;
-   
+    private PlayerInput playerinput;
+
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         playerinput = new PlayerInput();
-        playerinput.Player.Enable();
-
-        playerinput.Player.Movement.started += ActiveRotation;
-        playerinput.Player.Movement.performed += ActiveRotation;
-        playerinput.Player.Movement.canceled += ActiveRotation;
     }
 
-
-    public void ActiveRotation(InputAction.CallbackContext value)
+    private void OnEnable()
     {
+        
+    }
 
-        moveDirection2d = value.ReadValue<Vector2>();
-        Vector3 camera_foward = CameraBoom_Transform.forward;
-        Vector3 camera_right = CameraBoom_Transform.right;
-        lookVector = camera_right * moveDirection2d.x + camera_foward * moveDirection2d.y;
-        if (lookVector.magnitude != 0)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookVector), 0.5f);
-        }
+    public void Normal_Attack() {
 
-       // transform.position = new Vector3(0, -1, 0);
+
+        Debug.Log("ÄÞº¸ °ø°Ý");
+        animator.SetTrigger("NormalAttack");
+
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
+       
     }
 
     // Update is called once per frame
