@@ -7,7 +7,7 @@ public class Define
 
     public enum Scene {
     
-        Unknown,Login,Lobby,Game
+        Unknown,Login,Lobby,Game//로그인 ,로비,본게임
     }
 
 

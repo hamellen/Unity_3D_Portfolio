@@ -12,7 +12,7 @@ public abstract class BaseScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     public virtual void Init() {
@@ -22,8 +22,8 @@ public abstract class BaseScene : MonoBehaviour
             //이벤트시스템 생성
 
             Manager.RESOURCES.Instantiate("UI/EventSystem").name="EventSystem";
-
         }
+        
         
     }
 

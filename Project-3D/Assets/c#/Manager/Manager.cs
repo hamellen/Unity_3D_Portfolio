@@ -17,10 +17,14 @@ public class Manager : MonoBehaviour
     ResourcesManager resourcesManager = new ResourcesManager();
     SceneManagerEx scenemanager = new SceneManagerEx();
     SoundManager soundManager = new SoundManager();
+    //PoolManager poolManager = new PoolManager();
+    DataManager dataManager = new DataManager();
 
     public static UIManager UI { get { return manager.ui; } }
 
     //public static PlayerInput inputActions { get { return managers.playerinput; } }
+
+    public static DataManager DATAMANAGER { get { return manager.dataManager; } }
 
 
     public static ResourcesManager RESOURCES { get { return manager.resourcesManager; } }
@@ -28,10 +32,13 @@ public class Manager : MonoBehaviour
     public static SceneManagerEx SCENEMANAGER { get { return manager.scenemanager; } }
 
     public static SoundManager SOUNDMANAGER { get { return manager.soundManager; } }
+
+   // public static PoolManager POOLMANAGER { get { return manager.poolManager; } }
     static void Init() {
 
         manager = FindObjectOfType<Manager>();
-        manager.soundManager.Init();
+        manager.dataManager.Init();
+        //manager.poolManager.Init();
     }
 
     private void OnEnable()
@@ -61,6 +68,6 @@ public class Manager : MonoBehaviour
 
         SOUNDMANAGER.Clear();
         SCENEMANAGER.Clear();
-
+        
     }
 }

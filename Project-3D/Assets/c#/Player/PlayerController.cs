@@ -22,11 +22,11 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void Normal_Attack() {
+    public void Skill_Attack() {
 
 
         Debug.Log("ÄÞº¸ °ø°Ý");
-        animator.SetTrigger("NormalAttack");
+        animator.SetTrigger("Skill");
 
     }
 
