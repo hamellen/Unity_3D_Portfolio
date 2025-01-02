@@ -169,10 +169,10 @@ MonoBehaviour:
           m_StringArgument: Skill
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: NormalAttack, Assembly-CSharp
-        m_MethodName: set_AttackCount
-        m_Mode: 3
+      - m_Target: {fileID: 5838580448602659845}
+        m_TargetAssemblyTypeName: UI_Control, Assembly-CSharp
+        m_MethodName: dodge
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -499,10 +499,10 @@ MonoBehaviour:
           m_StringArgument: Skill
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: NormalAttack, Assembly-CSharp
-        m_MethodName: set_AttackCount
-        m_Mode: 3
+      - m_Target: {fileID: 5838580448602659845}
+        m_TargetAssemblyTypeName: UI_Control, Assembly-CSharp
+        m_MethodName: ComboAttack
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -642,7 +642,7 @@ GameObject:
   - component: {fileID: 5724339188460950302}
   - component: {fileID: 843618461246913752}
   m_Layer: 5
-  m_Name: Stun
+  m_Name: Active
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -761,10 +761,10 @@ MonoBehaviour:
           m_StringArgument: Skill
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: NormalAttack, Assembly-CSharp
-        m_MethodName: set_AttackCount
-        m_Mode: 3
+      - m_Target: {fileID: 5838580448602659845}
+        m_TargetAssemblyTypeName: UI_Control, Assembly-CSharp
+        m_MethodName: ActiveSkill
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

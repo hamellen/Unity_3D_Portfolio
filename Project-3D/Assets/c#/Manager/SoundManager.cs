@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class SoundManager 
 {
     AudioSource[] audioSources= new AudioSource[(int)Define.Sound.MaxCount];
-
+   
 
     public void Init() {
 
         GameObject root = GameObject.Find("Sound");
-
+        
         if (root == null) {
 
             root = new GameObject { name = "Sound" };
@@ -48,42 +49,42 @@ public class SoundManager
     
     }
 
-    public void Play(Define.Sound type, string path) {
+    public void Play(Define.Sound type,AudioClip clip,float pitch) {
 
         if (type == Define.Sound.Bgm)
         {
-            AudioClip audioClip = Manager.RESOURCES.Load<AudioClip>(path);
-
-            if (audioClip == null) {
-
-                return;
-            }
-
+          
             AudioSource audiosource = audioSources[(int)Define.Sound.Bgm];
             if (audiosource.isPlaying) {
                 audiosource.Pause();
             }
-
-            audiosource.clip = audioClip;
+            audiosource.pitch = pitch;
+            audiosource.clip = clip;
             audiosource.Play();
         }
-        else if (type == Define.Sound.Effect) {
+        else if (type == Define.Sound.D2_Effect) {
 
-            AudioClip audioClip = Manager.RESOURCES.Load<AudioClip>(path);
-
-            if (audioClip == null)
-            {
-
-                return;
-            }
-
-            AudioSource audiosource = audioSources[(int)Define.Sound.Effect];
-            audiosource.PlayOneShot(audioClip);//단발성
+            
+           
+            AudioSource audiosource = audioSources[(int)Define.Sound.D2_Effect];
+            audiosource.pitch = pitch;
+            audiosource.PlayOneShot(clip);//단발성
 
         }
-    
+        
     }
 
+    public void Play_Position(Vector3 position, string path,float pitch) {
 
+        AudioClip audioClip = Manager.RESOURCES.Load<AudioClip>(path);
 
+        if (audioClip == null)
+        {
+
+            return;
+        }
+        
+        AudioSource.PlayClipAtPoint(audioClip, position,pitch);
+
+    }
 }

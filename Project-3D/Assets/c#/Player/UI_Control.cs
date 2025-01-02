@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class UI_Control : MonoBehaviour
+
+public class UI_Control : MonoBehaviour, IPointerUpHandler
 {
 
     private PlayerController playercontroller;
@@ -41,5 +43,10 @@ public class UI_Control : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        Debug.Log("터치 종료 ");
     }
 }

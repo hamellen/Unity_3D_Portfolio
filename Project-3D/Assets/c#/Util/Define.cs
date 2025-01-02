@@ -13,8 +13,21 @@ public class Define
 
     public enum Sound { 
     
-        Bgm,Effect,MaxCount
+        Bgm,D2_Effect,MaxCount
     
     }
+
+    public enum Weapon { 
+    
+        Sword,Axe,MaxCount
+    }
+
+    public enum Grade { 
+        Normal,Rare,Unique,Epic,Legend
+    }
+    
+    public enum Effect { 
+        Healing   
+     }
 
 }

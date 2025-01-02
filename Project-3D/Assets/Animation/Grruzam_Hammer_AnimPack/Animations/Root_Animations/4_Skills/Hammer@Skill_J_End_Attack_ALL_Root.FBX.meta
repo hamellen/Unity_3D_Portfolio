@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 89e23fea9e7752a40bf6483e27801011
 ModelImporter:
-  serializedVersion: 19301
+  serializedVersion: 22200
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
@@ -17,14 +17,15 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: root
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
       copied configuration does not match position in animation file:\n\t'thigh_l'
-      : position error = 1.270231 mm\n\t'calf_l' : position error = 10.775393 mm\n\t'foot_l'
-      : position error = 11.714890 mm\n\t'ball_l' : position error = 5.112409 mm\n\t'thigh_r'
-      : position error = 1.452921 mm\n\t'calf_r' : position error = 12.554970 mm\n\t'foot_r'
-      : position error = 5.461603 mm\n\t'ball_r' : position error = 3.898597 mm\n"
+      : position error = 7.953517 mm\n\t'calf_l' : position error = 12.155527 mm\n\t'foot_l'
+      : position error = 8.983188 mm\n\t'ball_l' : position error = 16.551769 mm\n\t'thigh_r'
+      : position error = 7.784894 mm\n\t'calf_r' : position error = 14.592809 mm\n\t'foot_r'
+      : position error = 16.570494 mm\n\t'ball_r' : position error = 13.594007 mm\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
@@ -228,27 +229,35 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+    optimizeBones: 1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -847,8 +856,7 @@ ModelImporter:
     - name: upperarm_twist_01_l
       parentName: upperarm_l
       position: {x: -0.0032273864, y: -0.0010338974, z: -0.0036761474}
-      rotation: {x: 0.00000004470348, y: 0.000000071609975, z: -0.000000010615626,
-        w: 1}
+      rotation: {x: 0.00000004470348, y: 0.000000071609975, z: -0.000000010615626, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: clavicle_r
       parentName: spine_03
@@ -883,8 +891,7 @@ ModelImporter:
     - name: ik_hand_r
       parentName: ik_hand_gun
       position: {x: -0, y: 0, z: -0.000000019073486}
-      rotation: {x: -0.00000008195639, y: 0.00000009499491, z: -0.000000029802317,
-        w: 1}
+      rotation: {x: -0.00000008195639, y: 0.00000009499491, z: -0.000000029802317, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: index_01_r
       parentName: hand_r
@@ -939,8 +946,7 @@ ModelImporter:
     - name: WeaponAttach_R_Bone
       parentName: R_Hand_Weapon_Bone
       position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0.00000009336505, y: 0.000000010884827, z: -0.00000004051253,
-        w: 1}
+      rotation: {x: 0.00000009336505, y: 0.000000010884827, z: -0.00000004051253, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: ring_01_r
       parentName: hand_r
@@ -1064,12 +1070,14 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 7dea3cd5079771b4aab7bdac3c829161,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 7dea3cd5079771b4aab7bdac3c829161, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 2
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

@@ -44,6 +44,8 @@ public class Movement3d : MonoBehaviour
         animator = GetComponent<Animator>();
 
         cam = Camera.main.transform;
+
+        movespeed = GetComponent<PLAYER_STAT>().Speed;
     }
 
     public void ActiveMovementEnd(InputAction.CallbackContext value) {

@@ -9,12 +9,13 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
 
     private PlayerInput playerinput;
-
-
+   
     private void Awake()
     {
         animator = GetComponent<Animator>();
         playerinput = new PlayerInput();
+       
+        //foot_sfx = Manager.RESOURCES.Load<AudioClip>("SFX/Footsteps - Essentials/Footsteps_Grass/Footsteps_Grass_Run/Footsteps_Grass_Run_11");
     }
 
     private void OnEnable()
@@ -28,6 +29,14 @@ public class PlayerController : MonoBehaviour
         Debug.Log("ÄÞº¸ °ø°Ý");
         animator.SetTrigger("Skill");
 
+    }
+
+    public void FootStep() {
+
+
+        Manager.SOUNDMANAGER.Play_Position(transform.position, "SFX/Footsteps - Essentials/Footsteps_Grass/Footsteps_Grass_Run/Footsteps_Grass_Run_11",2.0f);
+        Debug.Log("¶Ñ¹÷");
+    
     }
 
 

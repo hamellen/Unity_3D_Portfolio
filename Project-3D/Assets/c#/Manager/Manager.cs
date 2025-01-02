@@ -17,7 +17,7 @@ public class Manager : MonoBehaviour
     ResourcesManager resourcesManager = new ResourcesManager();
     SceneManagerEx scenemanager = new SceneManagerEx();
     SoundManager soundManager = new SoundManager();
-    //PoolManager poolManager = new PoolManager();
+    
     DataManager dataManager = new DataManager();
 
     public static UIManager UI { get { return manager.ui; } }
@@ -33,12 +33,17 @@ public class Manager : MonoBehaviour
 
     public static SoundManager SOUNDMANAGER { get { return manager.soundManager; } }
 
-   // public static PoolManager POOLMANAGER { get { return manager.poolManager; } }
+   
     static void Init() {
 
+
+
         manager = FindObjectOfType<Manager>();
-        manager.dataManager.Init();
-        //manager.poolManager.Init();
+
+
+        manager.dataManager.Init();//데이터 매니저 초기화
+        manager.soundManager.Init();//사운드 매니저 초기화
+        
     }
 
     private void OnEnable()
