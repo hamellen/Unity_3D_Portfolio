@@ -9,6 +9,6 @@ public class STAT : MonoBehaviour
     public int MAXHP;
     public int ATTACK;
     public int DEFENCE;
-    public float Speed;
+    public float SPEED;
 
 }

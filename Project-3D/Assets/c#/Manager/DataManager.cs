@@ -4,13 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+
+
+
+
 [Serializable]
 public class Stat {
 
-    public string name;
+    public int index;
     public int hp;
+    public int maxhp;
     public int attack;
-   
+    public int defence;
+    public int speed;
 }
 [Serializable]
 public class StatData {
@@ -23,17 +29,18 @@ public class StatData {
 public class DataManager 
 {
 
-    public Dictionary<string, Stat> StatDict { get; private set; } = new Dictionary<string, Stat>();
+    public Dictionary<int, Stat> StatDict { get;  set; } = new Dictionary<int, Stat>();
 
     public void Init()
     {
-        TextAsset asset=Manager.RESOURCES.Load<TextAsset>($"Data/PlayerStat");
+        TextAsset asset=Manager.RESOURCES.Load<TextAsset>($"Data/MonsterStat");
+        Debug.Log(asset.text);
         StatData data = JsonUtility.FromJson<StatData>(asset.text);
 
         foreach (Stat stat in data.stats) { //µÒº≈≥ ∏Æø° µ•¿Ã≈Õ ª¿‘∞˙¡§
 
-            StatDict.Add(stat.name, stat);
-        
+            StatDict.Add(stat.index, stat);
+            Debug.Log($"{stat.index}");
         }
 
     }

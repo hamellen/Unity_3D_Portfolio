@@ -45,7 +45,7 @@ public class Movement3d : MonoBehaviour
 
         cam = Camera.main.transform;
 
-        movespeed = GetComponent<PLAYER_STAT>().Speed;
+        movespeed = GetComponent<PLAYER_STAT>().SPEED;
     }
 
     public void ActiveMovementEnd(InputAction.CallbackContext value) {

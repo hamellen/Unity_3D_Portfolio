@@ -17,16 +17,13 @@ public class Manager : MonoBehaviour
     ResourcesManager resourcesManager = new ResourcesManager();
     SceneManagerEx scenemanager = new SceneManagerEx();
     SoundManager soundManager = new SoundManager();
-    
-    DataManager dataManager = new DataManager();
-
-    public static UIManager UI { get { return manager.ui; } }
-
-    //public static PlayerInput inputActions { get { return managers.playerinput; } }
+     DataManager dataManager = new DataManager();
 
     public static DataManager DATAMANAGER { get { return manager.dataManager; } }
 
+    public static UIManager UI { get { return manager.ui; } }
 
+ 
     public static ResourcesManager RESOURCES { get { return manager.resourcesManager; } }
 
     public static SceneManagerEx SCENEMANAGER { get { return manager.scenemanager; } }

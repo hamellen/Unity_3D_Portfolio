@@ -1,0 +1,25 @@
+{
+
+  "STATS": [
+
+    {
+      "index": "1",
+      "hp": "100",
+      "maxhp": "100",
+      "attack": "10",
+      "defence": "5",
+      "speed" :  "5"
+    },
+    {
+      "index": "2",
+      "hp": "200",
+      "maxhp": "200",
+      "attack": "30",
+      "defence": "10",
+      "speed": "5"
+
+    }
+    
+  ]
+  
+}
