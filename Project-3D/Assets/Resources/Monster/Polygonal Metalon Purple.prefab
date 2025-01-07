@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 700371461216253264}
   - component: {fileID: 8229365004718893055}
   - component: {fileID: -7093832003802759844}
-  - component: {fileID: -3765224195930882502}
+  - component: {fileID: 8800159752223515189}
   m_Layer: 0
   m_Name: Polygonal Metalon Purple
   m_TagString: Untagged
@@ -924,7 +924,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewards:
   - {fileID: 11400000, guid: bb96101d30bc13840bfec64d2b578923, type: 2}
---- !u!114 &-3765224195930882502
+  HpBar: {fileID: 0}
+  camera: {fileID: 0}
+  slider: {fileID: 0}
+--- !u!114 &8800159752223515189
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -933,7 +936,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1462720695320296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c238dc758300047b2aa9e0e7846c2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 818576f0e16f47341ad763001614f734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   LEVEL: 0
@@ -942,6 +945,7 @@ MonoBehaviour:
   ATTACK: 0
   DEFENCE: 0
   SPEED: 0
+  reward_gold: 0
 --- !u!1 &1486048802852170
 GameObject:
   m_ObjectHideFlags: 0

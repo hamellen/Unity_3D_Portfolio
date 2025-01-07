@@ -6,6 +6,6 @@ public class PLAYER_STAT : STAT
 {
     public int EXP=0; // °æÇèÄ¡
     public int GOLD=0; // È×µæÀçÈ­
-    public int MANA;
+    public int Cash=0;
 
 }

@@ -10,7 +10,10 @@ public class Define
         Unknown,Login,Lobby,Game//로그인 ,로비,본게임
     }
 
-
+    public enum Monster_State { 
+    
+        IDLE,ATTACK
+    }
     public enum Sound { 
     
         Bgm,D2_Effect,MaxCount
@@ -19,7 +22,7 @@ public class Define
 
     public enum Weapon { 
     
-        Sword,Axe,MaxCount
+        Sword,Axe,Dagger,MaxCount
     }
 
     public enum Grade { 

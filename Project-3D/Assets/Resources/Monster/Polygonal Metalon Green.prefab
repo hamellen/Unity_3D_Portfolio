@@ -167,9 +167,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4841551215148182}
+  - component: {fileID: 2910081207848053089}
+  - component: {fileID: 5895657494977956049}
   m_Layer: 7
   m_Name: RigJaw
-  m_TagString: Untagged
+  m_TagString: Monster_Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,13 +184,48 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123501708062036}
   serializedVersion: 2
-  m_LocalRotation: {x: 4.263058e-14, y: -0.00000003381066, z: -0.17364818, w: 0.9848078}
-  m_LocalPosition: {x: 0.07258148, y: 0.38460112, z: -0.00000007488459}
+  m_LocalRotation: {x: 0.000000022526535, y: -0.000000059312818, z: 0.08464217, w: 0.99641144}
+  m_LocalPosition: {x: -0.097955264, y: 0.15307978, z: -0.0000009353608}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4699838388527884}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 9.711}
+--- !u!136 &2910081207848053089
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123501708062036}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.23
+  m_Height: 1.09
+  m_Direction: 0
+  m_Center: {x: -0.95, y: 0.19, z: 0}
+--- !u!114 &5895657494977956049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123501708062036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 258a106c99cb6374f9d1db26263780ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1129088085268148
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,7 +1189,7 @@ GameObject:
   - component: {fileID: 7549956914151285187}
   - component: {fileID: 3146936169935992156}
   - component: {fileID: 2100916985856998826}
-  - component: {fileID: 1909048020661668244}
+  - component: {fileID: 4731122297297861757}
   m_Layer: 7
   m_Name: Polygonal Metalon Green
   m_TagString: Untagged
@@ -1204,7 +1241,7 @@ Animator:
   m_GameObject: {fileID: 1783563462218004}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 66ca9bf0145725543a1e8a693589f362, type: 3}
-  m_Controller: {fileID: 9100000, guid: e761ace889a78a946967af8d6890f71d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 92c2ff0568eaf7644947eaeb5d3637ae, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1231,6 +1268,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bd9a56cd9553bf64683d748e96e3afd4, type: 2}
   HpBar: {fileID: 5246060320940948943}
   camera: {fileID: 0}
+  slider: {fileID: 0}
 --- !u!195 &7549956914151285187
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1303,7 +1341,7 @@ CapsuleCollider:
   m_Height: 0.5
   m_Direction: 0
   m_Center: {x: 0, y: 1.3, z: 0}
---- !u!114 &1909048020661668244
+--- !u!114 &4731122297297861757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1312,15 +1350,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1783563462218004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c238dc758300047b2aa9e0e7846c2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 818576f0e16f47341ad763001614f734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   LEVEL: 0
-  HP: 0
-  MAXHP: 0
-  ATTACK: 0
+  HP: 300
+  MAXHP: 300
+  ATTACK: 10
   DEFENCE: 0
-  SPEED: 0
+  SPEED: 5
+  reward_gold: 10
 --- !u!1 &1804318802084684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1504,8 +1543,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845593574226382}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 2.67, z: -2.96}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

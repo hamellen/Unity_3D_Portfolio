@@ -7,6 +7,9 @@ TagManager:
   - Axe_slot
   - Start
   - NavMeshSurface
+  - Axe
+  - Weapon
+  - Monster_Attack
   layers:
   - Default
   - TransparentFX

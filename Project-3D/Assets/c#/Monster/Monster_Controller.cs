@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Monster_Controller : MonoBehaviour
 {
+
+    public delegate void Attack_Event(Define.Monster_State state);
+    public event Attack_Event attack;
 
     public List<IMAGE_ITEM> rewards = new List<IMAGE_ITEM>();
 
@@ -14,21 +18,23 @@ public class Monster_Controller : MonoBehaviour
 
     [SerializeField] Transform HpBar;
     [SerializeField] Camera camera;
+    [SerializeField] Slider slider;
 
-
-    STAT monster_stat;
+   
+    public MONSTER_STAT monster_stat;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        monster_stat = GetComponent<STAT>();
+        monster_stat = GetComponent<MONSTER_STAT>();
+        agent.speed = monster_stat.SPEED;
 
         camera = Camera.main;
        
 
-        monster_stat = GetComponent<STAT>();
-
+       
+        slider = GetComponentInChildren<Slider>();
         
 
         
@@ -42,7 +48,33 @@ public class Monster_Controller : MonoBehaviour
         //}
     }
 
-   
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Weapon") {
+
+            Debug.Log("피격당함");
+            monster_stat.HP = Mathf.Clamp(monster_stat.HP-other.gameObject.GetComponent<Weapon>().damage,0, monster_stat.MAXHP);
+            slider.value = (monster_stat.HP / monster_stat.MAXHP);
+            if (monster_stat.HP == 0) {
+                animator.SetBool("IsDead", true);
+                FindObjectOfType<PlayerController>().ApplyGold(monster_stat.reward_gold);
+                Destroy(gameObject, 5.0f);
+            }
+        }
+    }
+
+    public void Attack() {
+
+        animator.SetTrigger("Monster_Attack");
+        attack(Define.Monster_State.ATTACK);
+        
+    }
+
+    public void ResetAttack() {
+
+        attack(Define.Monster_State.IDLE);
+    }
+
     // Update is called once per frame
     void Update()
     {

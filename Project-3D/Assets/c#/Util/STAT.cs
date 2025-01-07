@@ -5,8 +5,8 @@ using UnityEngine;
 public class STAT : MonoBehaviour
 {
     public int LEVEL;
-    public int HP;
-    public int MAXHP;
+    public float HP;
+    public float MAXHP;
     public int ATTACK;
     public int DEFENCE;
     public float SPEED;
