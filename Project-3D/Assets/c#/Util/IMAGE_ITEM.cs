@@ -7,23 +7,29 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "IMAGE_ITEM",menuName ="Scriptable/IMAGE_ITEM")]
 public class IMAGE_ITEM : ScriptableObject
 {
-    [SerializeField]
-    string name;
+   
+    public int id;
 
-    [SerializeField]
-    Define.Grade grade;
+    
+    public int count;
 
-    [SerializeField]
-    Define.Effect effect;
+    
+    public string name;
 
-    [SerializeField]
-    int  figure;
+   
+    public Define.Grade grade;
 
-    [SerializeField]
-    string description;
+    
+    public Define.Consumable consumable;
 
-    [SerializeField]
-    Sprite  image;
+   
+    public int  figure;
+
+    
+    public string description;
+
+    
+    public Sprite  image;
 
 
 

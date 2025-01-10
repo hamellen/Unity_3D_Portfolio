@@ -18,8 +18,13 @@ public class Manager : MonoBehaviour
     SceneManagerEx scenemanager = new SceneManagerEx();
     SoundManager soundManager = new SoundManager();
      DataManager dataManager = new DataManager();
+    ItemManager itemManager = new ItemManager();
+
 
     public static DataManager DATAMANAGER { get { return manager.dataManager; } }
+
+    public static ItemManager ITEMMANAGER { get { return manager.itemManager; } }
+
 
     public static UIManager UI { get { return manager.ui; } }
 
@@ -40,7 +45,10 @@ public class Manager : MonoBehaviour
 
         manager.dataManager.Init();//데이터 매니저 초기화
         manager.soundManager.Init();//사운드 매니저 초기화
-        
+        manager.itemManager.Init();
+
+        Debug.Log($"ITEM DATABASE COUNT:{manager.dataManager.image_item_list.Count}");
+
     }
 
     private void OnEnable()

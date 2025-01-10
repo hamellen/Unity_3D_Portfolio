@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     public Weapon weapon;
 
     public PLAYER_STAT player_stat;
+    public Equipment current_weapon;
+    public Equipment current_armor;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();

@@ -31,6 +31,8 @@ public class DataManager
 
     public Dictionary<int, Stat> StatDict { get;  set; } = new Dictionary<int, Stat>();
 
+    public List<IMAGE_ITEM> image_item_list = new List<IMAGE_ITEM>();
+
     public void Init()
     {
         TextAsset asset=Manager.RESOURCES.Load<TextAsset>($"Data/MonsterStat");
@@ -40,8 +42,12 @@ public class DataManager
         foreach (Stat stat in data.stats) { //µñ¼Å³Ê¸®¿¡ µ¥ÀÌÅÍ »ğÀÔ°úÁ¤
 
             StatDict.Add(stat.index, stat);
-            Debug.Log($"{stat.index}");
+            //Debug.Log($"{stat.index}");
         }
+
+        image_item_list.Add(Manager.RESOURCES.Load<IMAGE_ITEM>("Scriptable/consume/Normal_Healing"));
+        image_item_list.Add(Manager.RESOURCES.Load<IMAGE_ITEM>("Scriptable/consume/Rare_Healing"));
+        image_item_list.Add(Manager.RESOURCES.Load<IMAGE_ITEM>("Scriptable/consume/Unique_Healing"));
 
     }
 }

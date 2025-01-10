@@ -25,11 +25,21 @@ public class Define
         Sword,Axe,Dagger,MaxCount
     }
 
+    public enum ItemType {
+
+        Equipment, Consumable
+    }
+    
+
+    public enum Equipment { 
+    
+        Weapon,Armor,shoe,MaxCount
+    }
     public enum Grade { 
         Normal,Rare,Unique,Epic,Legend
     }
     
-    public enum Effect { 
+    public enum Consumable{ 
         Healing   
      }
 

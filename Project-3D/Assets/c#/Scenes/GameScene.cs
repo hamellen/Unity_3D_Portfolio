@@ -37,9 +37,11 @@ public class GameScene : BaseScene
         if (obj == null)
         {
             //이벤트시스템 생성
-           
-            resource2.Instantiate("UI/Scene/Basic_UI").name = "Basic_UI";
-            //Manager.RESOURCES.Instantiate("UI/Scene/Basic_UI").name = "Basic_UI";
+
+            //resource2.Instantiate("UI/Scene/Basic_UI").name = "Basic_UI";
+            //Manager.RESOURCES.Instantiate("UI/Scene/Basic_UI").name = "Basic_UI";\\
+            Manager.UI.ShowBasicUI("Basic_UI");
+            Manager.UI.ShowPopUI("UI_INVENTORY");
         }
 
         Manager.SOUNDMANAGER.Play(Define.Sound.Bgm, Bgm_clip, 1.0f);

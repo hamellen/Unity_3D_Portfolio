@@ -226,6 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258a106c99cb6374f9d1db26263780ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collider: {fileID: 0}
+  monster_controller: {fileID: 0}
 --- !u!1 &1129088085268148
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,9 +1268,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewards:
   - {fileID: 11400000, guid: bd9a56cd9553bf64683d748e96e3afd4, type: 2}
+  random_range: 10
+  central_point: {fileID: 0}
   HpBar: {fileID: 5246060320940948943}
   camera: {fileID: 0}
   slider: {fileID: 0}
+  view_angle: 45
+  view_distance: 10
+  attack_distance: 1
+  view_layermask:
+    serializedVersion: 2
+    m_Bits: 8
+  IsChased: 0
+  spooted_figure: 0
+  monster_stat: {fileID: 0}
 --- !u!195 &7549956914151285187
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1279,7 +1292,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.7
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 500
@@ -1316,7 +1329,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &2100916985856998826
 CapsuleCollider:
