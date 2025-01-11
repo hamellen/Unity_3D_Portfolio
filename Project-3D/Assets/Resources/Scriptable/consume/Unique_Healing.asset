@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   count: 0
-  name: "\uD604\uC138\uC758 \uBB3C\uC57D"
+  name: Lv3_heal
   grade: 2
-  effect: 0
+  consumable: 0
   figure: 100
   description: "\uACE0\uB300\uC758 \uB4DC\uB798\uACE4\uC774 \uC990\uACA8 \uB9C8\uC168\uB2E4\uB294
     \uC18C\uBB38\uC774 \uC804\uD574\uC9C0\uB294 \uBB3C\uC57D"

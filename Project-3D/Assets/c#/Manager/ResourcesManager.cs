@@ -28,6 +28,15 @@ public class ResourcesManager
 
     }
 
+    public GameObject Instantiate_object(GameObject go, Transform parent = null) {
+
+        if (go == null) {
+            return null;
+        }
+
+        return Object.Instantiate(go, parent);
+    }
+
     public void Destroy(GameObject go)
     {
 

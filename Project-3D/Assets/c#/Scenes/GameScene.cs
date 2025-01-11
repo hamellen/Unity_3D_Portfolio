@@ -12,7 +12,7 @@ public class GameScene : BaseScene
      void Start()
     {
         Init();
-        //start = GameObject.FindGameObjectWithTag("Start").transform;
+        start = GameObject.FindGameObjectWithTag("Start").transform;
     }
 
     public override void Init() {
@@ -26,6 +26,7 @@ public class GameScene : BaseScene
         {
            
             player=resource2.Instantiate("Player/ThirdPersonCharacter", start);
+            //player = Manager.RESOURCES.Instantiate("Player/ThirdPersonCharacter", start);
             player.name = "Player";
             
             //Manager.RESOURCES.Instantiate("Player/ThirdPersonCharacter", start).name = "Player";

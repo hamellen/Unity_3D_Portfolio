@@ -6,8 +6,8 @@ using UnityEngine.UIElements;
 public class inventory_controller : MonoBehaviour
 {
 
-    public GameObject con_slot;
-    public GameObject equ_slot;
+    public GameObject con_slot_list;
+    public GameObject equ_slot_list;
 
     ItemManager itemManager;
 
@@ -15,28 +15,51 @@ public class inventory_controller : MonoBehaviour
     public Slot_eq[] slot_equ_array;
     private void Start()
     {
-        con_slot.SetActive(true);
-        equ_slot.SetActive(false);
+        Manager.ITEMMANAGER.consumer += Apply_inventory_consumer_value;
+
+        con_slot_list.SetActive(true);
+        equ_slot_list.SetActive(false);
 
         itemManager = Manager.ITEMMANAGER;
 
         slot_con_array = GetComponentsInChildren<Slot_con>();
         slot_equ_array = GetComponentsInChildren<Slot_eq>();
 
-        Debug.Log($"consumer active slot count : {Manager.ITEMMANAGER.consumer_dic.Count}");
+        //Debug.Log($"consumer active slot count : {Manager.ITEMMANAGER.consumer_dic.Count}");
 
-        foreach(Slot_con slot_con in slot_con_array) {
+        Apply_inventory_consumer_value();
 
-            slot_con.DeActive();
-        }
+    }
 
-        for (int i = 0; i < itemManager.consumer_dic.Count; i++) {
+    public void event_click_equ() {
+
+        con_slot_list.SetActive(false);
+        equ_slot_list.SetActive(true);
+    }
+    public void event_click_con()
+    {
+        con_slot_list.SetActive(true);
+        equ_slot_list.SetActive(false);
+    }
+
+    public void Apply_inventory_consumer_value() {
+
+        Debug.Log("소비품 인벤토리 업데이트 ");
+
+        Reset_Consumer();
+        Draw_Consumer_slot();
+
+    }
+    public void Draw_Consumer_slot() {
+        for (int i = 0; i < itemManager.consumer_dic.Count; i++)
+        {
 
             IMAGE_ITEM consumer_itemdata;
 
-            if (itemManager.consumer_dic.TryGetValue(i,out consumer_itemdata))
+            if (itemManager.consumer_dic.TryGetValue(i, out consumer_itemdata))
             {
-                if (consumer_itemdata.count > 0) {
+                if (consumer_itemdata.count > 0)
+                {
 
                     slot_con_array[i].State_Update(consumer_itemdata);
                 }
@@ -44,17 +67,14 @@ public class inventory_controller : MonoBehaviour
         }
     }
 
-    public void event_click_equ() {
 
-        con_slot.SetActive(false);
-        equ_slot.SetActive(true);
-    }
-    public void event_click_con()
-    {
-        con_slot.SetActive(true);
-        equ_slot.SetActive(false);
-    }
+    public void Reset_Consumer() {
+        foreach (Slot_con slot_con in slot_con_array)
+        {
 
+            slot_con.DeActive();
+        }
+    }
     public void close() {
 
         Manager.UI.ClosePopUp();

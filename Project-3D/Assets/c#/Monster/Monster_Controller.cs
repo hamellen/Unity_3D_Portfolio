@@ -12,14 +12,15 @@ public class Monster_Controller : MonoBehaviour
     public delegate void Attack_Event(Define.Monster_State state);
     public event Attack_Event attack;
 
-    public List<IMAGE_ITEM> rewards = new List<IMAGE_ITEM>();
+    public List<Reward> reward_list = new List<Reward>();
 
-    public int random_range;
+    public int random_range_move;
+    public int random_range_spawn;
     public Transform central_point;
     Animator animator;
     NavMeshAgent agent;
 
-    PLAYER_STAT player_stat;
+    public PLAYER_STAT player_stat;
 
 
     [SerializeField] Transform HpBar;
@@ -46,8 +47,11 @@ public class Monster_Controller : MonoBehaviour
 
         camera = Camera.main;
 
-        player_stat = FindObjectOfType<PLAYER_STAT>();
-
+        //player_stat = FindObjectOfType<PlayerController>().player_stat;
+        if (player_stat == null) {
+            Debug.Log("플레이어 데이터 로딩 실패");
+        }
+       
         slider = GetComponentInChildren<Slider>();
         
 
@@ -68,12 +72,13 @@ public class Monster_Controller : MonoBehaviour
 
             transform.LookAt(other.gameObject.transform.position);
             Debug.Log("피격당함");
-            monster_stat.HP = Mathf.Clamp(monster_stat.HP- player_stat.ATTACK, 0, monster_stat.MAXHP);
+            monster_stat.HP = Mathf.Clamp(monster_stat.HP- FindObjectOfType<PlayerController>().player_stat.ATTACK, 0, monster_stat.MAXHP);//문제 있음 
             slider.value = (monster_stat.HP / monster_stat.MAXHP);
             if (monster_stat.HP == 0) {
                 animator.SetBool("IsDead", true);
                 FindObjectOfType<PlayerController>().ApplyGold(monster_stat.reward_gold);
                 Destroy(gameObject, 5.0f);
+                Generate_reward();
             }
         }
     }
@@ -86,6 +91,29 @@ public class Monster_Controller : MonoBehaviour
         
     }
 
+    public void Generate_reward() {
+
+        var resource= FindObjectOfType<Resource>();
+
+        foreach (Reward reward in reward_list) {
+
+            Reward_control control = reward.lootbox.GetComponent<Reward_control>();
+            control.reward_base = reward;
+            if (reward.type == Define.ItemType.Consumable)
+            {
+                Reward_con reward_con = reward as Reward_con;
+                control.text_GUI.text = Manager.ITEMMANAGER.consumer_dic[reward_con.id].name;
+
+                
+                resource.Instantiate(reward.lootbox, transform);
+
+                Debug.Log("보상상자 생성");
+            }
+            
+        
+        }
+    
+    }
     
     public void ResetAttack() {
 
@@ -114,7 +142,7 @@ public class Monster_Controller : MonoBehaviour
             Debug.Log("순찰중");
             Vector3 point;
 
-            if (RandomPoint(central_point.position, random_range, out point))
+            if (RandomPoint(central_point.position, random_range_move, out point))
             {
                 Debug.Log("랜덤 위치 탐색 성공");
                 agent.SetDestination(point);

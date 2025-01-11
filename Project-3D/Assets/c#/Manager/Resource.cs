@@ -27,6 +27,15 @@ public class Resource : MonoBehaviour
 
     }
 
+    public GameObject Instantiate(GameObject go, Transform parent)
+    {
+
+    
+        return Instantiate(go, parent.position, parent.rotation);
+
+
+    }
+
     public GameObject Instantiate(string path)
     {
 

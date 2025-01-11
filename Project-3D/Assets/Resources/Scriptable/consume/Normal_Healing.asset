@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e4e57567fe7a04d8b2c57dc81a393a, type: 3}
   m_Name: Normal_Healing
   m_EditorClassIdentifier: 
-  name: "\uBAA8\uD5D8\uAC00\uC758 \uBB3C\uC57D"
+  id: 0
+  count: 23
+  name: Lv1_heal
   grade: 0
-  effect: 0
+  consumable: 0
   figure: 10
   description: "\uC0DD\uBA85\uC758 \uB098\uBB34\uC5D0\uC11C \uAC13 \uB098\uC628 \uBB3C\uC57D "
   image: {fileID: 21300000, guid: 117b17facff65dc42b1b57deb7c21551, type: 3}

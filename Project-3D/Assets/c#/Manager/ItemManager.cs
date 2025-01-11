@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,13 @@ using UnityEngine;
 public class ItemManager
 {
 
+    public Action consumer;
+
+
     public Dictionary<int, IMAGE_ITEM> consumer_dic = new Dictionary<int, IMAGE_ITEM>();
-    
-   
+
+    public int weapon_id = 0;
+    public int armor_id = 0;
     
 
     public Dictionary<int, Weapon_eq> weapon_dic = new Dictionary<int, Weapon_eq>();
@@ -23,6 +28,13 @@ public class ItemManager
        
         }
 
+
+    }
+
+    public void Apply_Update_Consumer(int id) {
+
+        consumer_dic[id].count++;
+        consumer();
 
     }
 }

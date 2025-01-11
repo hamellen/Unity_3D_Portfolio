@@ -10,10 +10,10 @@ public class IMAGE_ITEM : ScriptableObject
    
     public int id;
 
-    
-    public int count;
 
-    
+    public int count;//갯수
+
+
     public string name;
 
    
@@ -23,7 +23,7 @@ public class IMAGE_ITEM : ScriptableObject
     public Define.Consumable consumable;
 
    
-    public int  figure;
+    public int  figure;//효과 적용시 적용되는 수치 
 
     
     public string description;

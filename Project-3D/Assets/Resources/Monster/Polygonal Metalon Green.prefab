@@ -1266,16 +1266,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9d717977a1daf40a483bafa7ebf83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewards:
-  - {fileID: 11400000, guid: bd9a56cd9553bf64683d748e96e3afd4, type: 2}
-  random_range: 10
+  reward_list: []
+  random_range_move: 5
+  random_range_spawn: 10
   central_point: {fileID: 0}
   HpBar: {fileID: 5246060320940948943}
   camera: {fileID: 0}
   slider: {fileID: 0}
   view_angle: 45
   view_distance: 10
-  attack_distance: 1
+  attack_distance: 2
   view_layermask:
     serializedVersion: 2
     m_Bits: 8

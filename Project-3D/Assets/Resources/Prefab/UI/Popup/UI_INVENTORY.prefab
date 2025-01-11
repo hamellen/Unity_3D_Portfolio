@@ -778,8 +778,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84c1682aaa8045d44b253d50173051fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  con_slot: {fileID: 1408093533735914494}
-  equ_slot: {fileID: 283848104177790538}
+  con_slot_list: {fileID: 1408093533735914494}
+  equ_slot_list: {fileID: 283848104177790538}
   slot_con_array: []
   slot_equ_array: []
 --- !u!1 &4262406021862788480

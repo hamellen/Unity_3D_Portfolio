@@ -32,6 +32,7 @@ public class DataManager
     public Dictionary<int, Stat> StatDict { get;  set; } = new Dictionary<int, Stat>();
 
     public List<IMAGE_ITEM> image_item_list = new List<IMAGE_ITEM>();
+    public List<D3_ITEM> d3_item_list = new List<D3_ITEM>();
 
     public void Init()
     {
@@ -48,6 +49,10 @@ public class DataManager
         image_item_list.Add(Manager.RESOURCES.Load<IMAGE_ITEM>("Scriptable/consume/Normal_Healing"));
         image_item_list.Add(Manager.RESOURCES.Load<IMAGE_ITEM>("Scriptable/consume/Rare_Healing"));
         image_item_list.Add(Manager.RESOURCES.Load<IMAGE_ITEM>("Scriptable/consume/Unique_Healing"));
+
+        d3_item_list.Add(Manager.RESOURCES.Load<D3_ITEM>("Scriptable/equipment/Axe"));//axe
+        d3_item_list.Add(Manager.RESOURCES.Load<D3_ITEM>("Scriptable/equipment/Dragon_Armor"));//armor
+        
 
     }
 }
