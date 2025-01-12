@@ -1866,6 +1866,7 @@ MonoBehaviour:
   start: {fileID: 787488566}
   player: {fileID: 0}
   Bgm_clip: {fileID: 8300000, guid: ac699d8cc40c8f644ab5330e41d96588, type: 3}
+  player_controller: {fileID: 0}
 --- !u!4 &1623812460
 Transform:
   m_ObjectHideFlags: 0
@@ -2718,7 +2719,7 @@ PrefabInstance:
     - target: {fileID: 54033296903660283, guid: 7f931d4b5c97d194d8726ddf5acdd440, type: 3}
       propertyPath: reward_list.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: fdcfedf4dae1d2346a092a95fafbe50b, type: 2}
+      objectReference: {fileID: 11400000, guid: a1f33436863958f4a8b10f5b38986946, type: 2}
     - target: {fileID: 4731122297297861757, guid: 7f931d4b5c97d194d8726ddf5acdd440, type: 3}
       propertyPath: HP
       value: 50

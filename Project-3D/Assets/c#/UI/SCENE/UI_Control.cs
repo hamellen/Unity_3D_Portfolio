@@ -17,6 +17,8 @@ public class UI_Control : MonoBehaviour, IPointerUpHandler
     public TextMeshProUGUI gold;//무료 재화
     public TextMeshProUGUI cash;//유료 재화
 
+    bool IsInventoryOpen = false;
+
     public Slider hp_slider;
     // Start is called before the first frame update
     void Start()
@@ -24,12 +26,12 @@ public class UI_Control : MonoBehaviour, IPointerUpHandler
         playercontroller = FindObjectOfType<PlayerController>();
         normal_attack = FindObjectOfType<NormalAttack>();
 
-        playercontroller.damage_event += Update_Hp;
+        playercontroller.hp_event += Update_Hp;
         playercontroller.gold_event += Update_Gold;
-        gold.text = $"{playercontroller.player_stat.GOLD}";
-        cash.text = $"{playercontroller.player_stat.Cash}";
+        gold.text = $"{playercontroller.stat.GOLD}";
+        cash.text = $"{playercontroller.stat.Cash}";
 
-        hp_slider.value = (playercontroller.player_stat.HP / playercontroller.player_stat.MAXHP);
+        hp_slider.value = (playercontroller.stat.HP / playercontroller.stat.MAXHP);
     }
 
     public void Normal_Attack()
@@ -60,14 +62,30 @@ public class UI_Control : MonoBehaviour, IPointerUpHandler
     }
     void Update_Hp() {
 
-        hp_slider.value = (playercontroller.player_stat.HP / playercontroller.player_stat.MAXHP);
+        hp_slider.value = (playercontroller.stat.HP / playercontroller.stat.MAXHP);
     }
 
     void Update_Gold() {
-        gold.text = $"{playercontroller.player_stat.GOLD}";
+        gold.text = $"{playercontroller.stat.GOLD}";
     }
     public void OnPointerUp(PointerEventData eventData)
     {
         Debug.Log("터치 종료 ");
+    }
+
+    public void interact_Inventory() {
+
+
+        if (IsInventoryOpen == false)
+        {
+            IsInventoryOpen = true;
+            playercontroller.inventory_obj.SetActive(true);
+        }
+        else if (IsInventoryOpen == true) {
+
+            IsInventoryOpen =false;
+            playercontroller.inventory_obj.SetActive(false);
+        }
+        
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Reward_control : MonoBehaviour
@@ -40,10 +41,19 @@ public class Reward_control : MonoBehaviour
                 Manager.ITEMMANAGER.Apply_Update_Consumer(reward_Con.id);
                 
             }
-            else if(reward_base.type == Define.ItemType.Equipment) { 
+            else if(reward_base.type == Define.ItemType.Equipment) { //¿Â∫Ò 
 
+                Reward_equ reward_equ = reward_base as Reward_equ;
 
+                if (reward_equ.equip == Define.Equipment.Weapon) {
 
+                    Manager.ITEMMANAGER.Add_Equipment_Dic(reward_equ.equip);
+                }
+                else if (reward_equ.equip == Define.Equipment.Armor)
+                {
+
+                    Manager.ITEMMANAGER.Add_Equipment_Dic(reward_equ.equip);
+                }
             }
 
             Destroy(gameObject);

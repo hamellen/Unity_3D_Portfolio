@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Normal_Healing
   m_EditorClassIdentifier: 
   id: 0
-  count: 23
+  count: 0
   name: Lv1_heal
   grade: 0
   consumable: 0

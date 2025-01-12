@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,28 +7,32 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
 
-    public delegate void DamageDelegate();
-    public event DamageDelegate damage_event;
-
-
-    public delegate void GoldDelegate();
-    public event DamageDelegate gold_event;
+    
+    public Action hp_event;
+    public Action gold_event;
 
     private Animator animator;
 
     private PlayerInput playerinput;
 
-    public Weapon weapon;
+    public Weapon weapon;//무기 피격 탐지용
 
-    public PLAYER_STAT player_stat;
+    public Player_Stat1 stat;
+
+    public GameObject inventory_obj;
+
+    //public PLAYER_STAT player_stat;
     public Equipment current_weapon;
     public Equipment current_armor;
+
+    public ParticleSystem heal;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         playerinput = new PlayerInput();
         weapon = GetComponentInChildren<Weapon>();
+
         //foot_sfx = Manager.RESOURCES.Load<AudioClip>("SFX/Footsteps - Essentials/Footsteps_Grass/Footsteps_Grass_Run/Footsteps_Grass_Run_11");
     }
 
@@ -47,14 +52,35 @@ public class PlayerController : MonoBehaviour
 
     public void ApplayDamage(int damage) {
 
-        player_stat.HP = Mathf.Clamp(player_stat.HP - damage, 0, player_stat.MAXHP);
-        damage_event();
+        stat.HP = Mathf.Clamp(stat.HP - damage, 0, stat.MAXHP);
+        hp_event();
     }
 
-    public void ApplyGold(int gold) {
+    
 
-        player_stat.GOLD += gold;
-        gold_event();
+    public void ApplyEvent(Define.Player_type type, int figure) {
+
+        if (type == Define.Player_type.GOLD)
+        {
+
+            Manager.DATAMANAGER.player_stat.GOLD += figure;
+            gold_event();
+        }
+        else if (type == Define.Player_type.DAMAGE)
+        {
+
+            stat.HP = Mathf.Clamp(stat.HP - figure, 0, stat.MAXHP);
+            hp_event();
+        }
+        else if (type == Define.Player_type.HEALING) {
+
+            stat.HP = Mathf.Clamp(stat.HP + figure, 0, stat.MAXHP);
+            
+            heal.Stop();
+            heal.Play();
+            hp_event();
+        }
+    
     }
 
 
@@ -75,7 +101,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        player_stat = GetComponent<PLAYER_STAT>();
+        stat = Manager.DATAMANAGER.player_stat;
+        heal.Stop();
+        Manager.ITEMMANAGER.activeconsumer += ApplyEvent;
     }
 
     // Update is called once per frame

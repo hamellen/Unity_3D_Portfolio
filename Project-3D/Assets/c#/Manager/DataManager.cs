@@ -34,6 +34,8 @@ public class DataManager
     public List<IMAGE_ITEM> image_item_list = new List<IMAGE_ITEM>();
     public List<D3_ITEM> d3_item_list = new List<D3_ITEM>();
 
+    public Player_Stat1 player_stat;
+
     public void Init()
     {
         TextAsset asset=Manager.RESOURCES.Load<TextAsset>($"Data/MonsterStat");
@@ -52,7 +54,7 @@ public class DataManager
 
         d3_item_list.Add(Manager.RESOURCES.Load<D3_ITEM>("Scriptable/equipment/Axe"));//axe
         d3_item_list.Add(Manager.RESOURCES.Load<D3_ITEM>("Scriptable/equipment/Dragon_Armor"));//armor
-        
 
+        player_stat= Manager.RESOURCES.Load<Player_Stat1>("Scriptable/stat/Player_stat");
     }
 }

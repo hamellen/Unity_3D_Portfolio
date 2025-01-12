@@ -8,15 +8,15 @@ public class D3_ITEM : ScriptableObject
 {
     
 
-    [SerializeField]
-    string name;
+    
+    public string name;
 
 
-    [SerializeField]
-    string description;
+   
+    public string description;
 
-    [SerializeField]
-    Sprite image;
+   
+    public Sprite image;
 
 
 }

@@ -29,8 +29,16 @@ public class Define
 
         Equipment, Consumable
     }
-    
 
+    public enum Player_type { 
+    
+        EXP,GOLD,DAMAGE,HEALING
+    }
+
+    public enum Inventory_action { 
+    
+        Open,Close
+    }
     public enum Equipment { 
     
         Weapon,Armor,shoe,MaxCount

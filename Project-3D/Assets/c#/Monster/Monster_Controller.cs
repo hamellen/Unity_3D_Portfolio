@@ -20,7 +20,7 @@ public class Monster_Controller : MonoBehaviour
     Animator animator;
     NavMeshAgent agent;
 
-    public PLAYER_STAT player_stat;
+    
 
 
     [SerializeField] Transform HpBar;
@@ -48,9 +48,8 @@ public class Monster_Controller : MonoBehaviour
         camera = Camera.main;
 
         //player_stat = FindObjectOfType<PlayerController>().player_stat;
-        if (player_stat == null) {
-            Debug.Log("플레이어 데이터 로딩 실패");
-        }
+        //player_stat = Manager.DATAMANAGER.player_stat;
+       
        
         slider = GetComponentInChildren<Slider>();
         
@@ -72,11 +71,11 @@ public class Monster_Controller : MonoBehaviour
 
             transform.LookAt(other.gameObject.transform.position);
             Debug.Log("피격당함");
-            monster_stat.HP = Mathf.Clamp(monster_stat.HP- FindObjectOfType<PlayerController>().player_stat.ATTACK, 0, monster_stat.MAXHP);//문제 있음 
+            monster_stat.HP = Mathf.Clamp(monster_stat.HP- Manager.DATAMANAGER.player_stat.ATTACK, 0, monster_stat.MAXHP);//문제 있음 
             slider.value = (monster_stat.HP / monster_stat.MAXHP);
             if (monster_stat.HP == 0) {
                 animator.SetBool("IsDead", true);
-                FindObjectOfType<PlayerController>().ApplyGold(monster_stat.reward_gold);
+                FindObjectOfType<PlayerController>().ApplyEvent(Define.Player_type.GOLD, monster_stat.reward_gold);
                 Destroy(gameObject, 5.0f);
                 Generate_reward();
             }
@@ -104,12 +103,18 @@ public class Monster_Controller : MonoBehaviour
                 Reward_con reward_con = reward as Reward_con;
                 control.text_GUI.text = Manager.ITEMMANAGER.consumer_dic[reward_con.id].name;
 
-                
+
                 resource.Instantiate(reward.lootbox, transform);
 
                 Debug.Log("보상상자 생성");
             }
-            
+            else if (reward.type == Define.ItemType.Equipment) {//장비 
+
+                Reward_equ reward_equ = reward as Reward_equ;
+                control.text_GUI.text = reward_equ.name;
+
+                resource.Instantiate(reward.lootbox, transform);
+            }
         
         }
     

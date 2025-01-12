@@ -25,7 +25,7 @@ public class UIManager
 
         Manager.RESOURCES.Instantiate($"UI/Scene/{name}");
 
-
+        
     }
 
     public void ClosePopUp() {

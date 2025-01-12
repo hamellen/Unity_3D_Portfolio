@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Armor_eq 
+public class Armor_eq : Equipment
 {
     
 

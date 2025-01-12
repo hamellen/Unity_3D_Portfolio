@@ -15,4 +15,5 @@ MonoBehaviour:
   lootbox: {fileID: 3606664884181340854, guid: 9b804a366ff9c13449c56e150fe7aaf6, type: 3}
   type: 0
   color: {r: 0.93372107, g: 0, b: 1, a: 0}
+  name: Hell's armor
   equip: 1

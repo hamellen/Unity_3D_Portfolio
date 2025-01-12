@@ -5,9 +5,9 @@ using UnityEngine;
 public abstract class Weapon : MonoBehaviour
 {
     public Define.Weapon weapon;
-    //public int damage;
+    
     public BoxCollider boxcollider;
-
+    
 
     public abstract void Active_weapon();
     public abstract void DeActive_weapon();

@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 50a0208afad970f42b91e82ff62fab00, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 50a0208afad970f42b91e82ff62fab00, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -285,6 +289,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 400000, guid: 50a0208afad970f42b91e82ff62fab00, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6935150129855867080}
+    - targetCorrespondingSourceObject: {fileID: 400000, guid: 50a0208afad970f42b91e82ff62fab00, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4062415447476994391}
     - targetCorrespondingSourceObject: {fileID: 400156, guid: 50a0208afad970f42b91e82ff62fab00, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2818748655086562017}
@@ -336,7 +343,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
-  player_stat: {fileID: 0}
+  stat: {fileID: 0}
+  inventory_obj: {fileID: 0}
+  heal: {fileID: 688488742248701118}
 --- !u!136 &1540373869599342219
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -436,6 +445,73 @@ MonoBehaviour:
   EXP: 0
   GOLD: 0
   Cash: 0
+--- !u!1001 &5288904226581026981
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 419572243883440660}
+    m_Modifications:
+    - target: {fileID: 8144037599045065202, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8144037599045065202, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.323
+      objectReference: {fileID: 0}
+    - target: {fileID: 8144037599045065202, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8144037599045065202, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8144037599045065202, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8144037599045065202, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8144037599045065202, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8144037599045065202, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8144037599045065202, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8144037599045065202, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017484664307500583, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
+      propertyPath: m_Name
+      value: Healing
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
+--- !u!198 &688488742248701118 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4678103677468820507, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
+  m_PrefabInstance: {fileID: 5288904226581026981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4062415447476994391 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8144037599045065202, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
+  m_PrefabInstance: {fileID: 5288904226581026981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7121981046239936578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -522,7 +598,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: 1
-  damage: 30
   boxcollider: {fileID: 0}
 --- !u!4 &5583412470792163255 stripped
 Transform:
