@@ -11,7 +11,9 @@ public class inventory_controller : MonoBehaviour
     public GameObject equ_slot_list;
 
     int current_equ_index;
-
+    int start_armor_index;
+    int prev_equip_weapon_index = -1;
+    int prev_equip_armor_index = -1;
     public Slot_con[] slot_con_array;
     public Slot_eq[] slot_equ_array;
 
@@ -25,7 +27,7 @@ public class inventory_controller : MonoBehaviour
     {
         Manager.ITEMMANAGER.consumer_action += Apply_inventory_consumer_value;
         Manager.ITEMMANAGER.equipment_action += Apply_inventory_equipment_value;
-
+        Manager.ITEMMANAGER.update_equip += Change_Equip;
 
         con_slot_list.SetActive(true);
         equ_slot_list.SetActive(false);
@@ -87,6 +89,32 @@ public class inventory_controller : MonoBehaviour
         }
     }
 
+    public void Change_Equip(int index, Define.Equipment equipment) {
+
+        if (equipment == Define.Equipment.Weapon)
+        {
+            if (prev_equip_weapon_index != -1) {
+                slot_equ_array[prev_equip_weapon_index].IsUse = false;
+            }
+
+            slot_equ_array[index].IsUse = true;
+            prev_equip_weapon_index = index;
+
+        }
+        else if (equipment == Define.Equipment.Armor) {
+            if (prev_equip_armor_index != -1)
+            {
+                slot_equ_array[prev_equip_armor_index].IsUse = false;
+            }
+
+            slot_equ_array[start_armor_index + index].IsUse = true;
+            prev_equip_armor_index = start_armor_index + index;
+
+        }
+        Apply_inventory_equipment_value();
+     }
+
+
     public void Draw_Equipment_slot()
     {
         current_equ_index = 0;
@@ -101,6 +129,7 @@ public class inventory_controller : MonoBehaviour
             }
 
         }
+        start_armor_index = current_equ_index;
         for (int i = 0; i < Manager.ITEMMANAGER.armor_dic.Count; i++)
         {
 

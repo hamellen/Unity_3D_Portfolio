@@ -106,7 +106,7 @@ public class Monster_Controller : MonoBehaviour
 
                 resource.Instantiate(reward.lootbox, transform);
 
-                Debug.Log("보상상자 생성");
+                
             }
             else if (reward.type == Define.ItemType.Equipment) {//장비 
 
@@ -185,7 +185,7 @@ public class Monster_Controller : MonoBehaviour
     {
         Collider[] cols = Physics.OverlapSphere(transform.position, view_distance, view_layermask);
 
-        Debug.Log("시야 동작중");
+        
         if (cols.Length == 0)//순환움직임 
         {
             //Debug.Log("순찰중");

@@ -2,13 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using static ItemManager;
 
 public class ItemManager
 {
-
+   // public delegate void Consumer_Action();
     public Action consumer_action;
+
+   // public delegate void Equipment_Action();
     public Action equipment_action;
+
+    public delegate void UpdateEquip(int index, Define.Equipment equipment);
+    public event UpdateEquip update_equip;
+
+    public Equipment current_weapon;
+    public Equipment current_armor;
 
 
     public delegate void ActiveConsumer(Define.Player_type type, int figure);
@@ -44,6 +53,24 @@ public class ItemManager
 
     }
 
+    public void Equip_activate(int index,Define.Equipment equipment) {
+
+        if (equipment == Define.Equipment.Weapon)
+        {
+            current_weapon = weapon_dic[index];
+            update_equip(index, equipment);
+            Debug.Log("무기 장착 ");
+
+        }
+        else if (equipment == Define.Equipment.Armor) {
+
+            current_armor = armor_dic[index];
+            update_equip(index, equipment);
+            Debug.Log("방어구 장착");
+        }
+    
+    }
+
     public void Use_Consumer(Define.Consumable consumable, int id) {//소비재 사용시 
 
         if (consumable == Define.Consumable.Healing)//힐링
@@ -69,7 +96,7 @@ public class ItemManager
 
         if (equipment == Define.Equipment.Weapon)
         {
-
+            Debug.Log("무기 슬롯 업데이트");
             Weapon_eq weapon_eq = new Weapon_eq();
             weapon_eq.equ_id = weapon_index;
             weapon_eq.equipment_type = Define.Equipment.Weapon;
@@ -80,6 +107,7 @@ public class ItemManager
         }
         else if (equipment == Define.Equipment.Armor)
         {
+            Debug.Log("방어구 슬롯 업데이트");
             Armor_eq armor_eq = new Armor_eq();
             armor_eq.equ_id = armor_index;
             armor_eq.equipment_type = Define.Equipment.Armor;

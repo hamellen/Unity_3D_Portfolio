@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour
     public GameObject inventory_obj;
 
     //public PLAYER_STAT player_stat;
-    public Equipment current_weapon;
-    public Equipment current_armor;
+    //public Equipment current_weapon;
+    //public Equipment current_armor;
 
     public ParticleSystem heal;
 
@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
 
 
         Manager.SOUNDMANAGER.Play_Position(transform.position, "SFX/Footsteps - Essentials/Footsteps_Grass/Footsteps_Grass_Run/Footsteps_Grass_Run_11",2.0f);
-        Debug.Log("¶Ñ¹÷");
+       
     
     }
 
@@ -104,6 +104,14 @@ public class PlayerController : MonoBehaviour
         stat = Manager.DATAMANAGER.player_stat;
         heal.Stop();
         Manager.ITEMMANAGER.activeconsumer += ApplyEvent;
+
+        if (Manager.ITEMMANAGER.current_weapon == null) {
+
+            Debug.Log("ÀåÂø ¹«±â ¾øÀ½");
+        }
+        if (Manager.ITEMMANAGER.current_armor == null) {
+            Debug.Log("ÀåÂø ¹æ¾î±¸ ¾øÀ½");
+        }
     }
 
     // Update is called once per frame

@@ -53,6 +53,7 @@ MonoBehaviour:
   camera: {fileID: 0}
   text_GUI: {fileID: 7289165589165000799}
   lightning_vfx: {fileID: 0}
+  reward_base: {fileID: 0}
 --- !u!54 &6694263755195223113
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -482,39 +483,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1628059922166312502, guid: 8852adadc5498dd49ba68bc0e6937f84, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7903729568302119297}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8852adadc5498dd49ba68bc0e6937f84, type: 3}
 --- !u!4 &908637477748343887 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9049656873663475383, guid: 8852adadc5498dd49ba68bc0e6937f84, type: 3}
   m_PrefabInstance: {fileID: 8145593366502845176}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7463293467803501774 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1628059922166312502, guid: 8852adadc5498dd49ba68bc0e6937f84, type: 3}
-  m_PrefabInstance: {fileID: 8145593366502845176}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &7903729568302119297
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7463293467803501774}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.5375279, y: 0.31514674, z: 0.42998043}
-  m_Center: {x: 0, y: 0.15856615, z: 0.000000014901161}

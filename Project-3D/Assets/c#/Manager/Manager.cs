@@ -7,7 +7,7 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {
 
-     static Manager manager;
+    public static Manager manager;
       //public static Manager managers { get {  return manager; } }
 
 
@@ -20,6 +20,7 @@ public class Manager : MonoBehaviour
      DataManager dataManager = new DataManager();
     ItemManager itemManager = new ItemManager();
 
+    public PlayerController playerController;
 
     public static DataManager DATAMANAGER { get { return manager.dataManager; } }
 
@@ -66,6 +67,7 @@ public class Manager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+        playerController = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame

@@ -23,20 +23,31 @@ public class Slot_eq : MonoBehaviour
         Active();
         equipment_type = equipment.equipment_type;
         id = equipment.equ_id;
+        if (IsUse)
+        {
+            use_image.enabled = true;
 
+        }
         eq_image.sprite = equipment.d3_item.image;
         
     }
 
-    public void Use() { 
-    
-        
+    public void Use() {
+
+        if (id == -1)
+        {
+            Debug.Log("비어있는 슬롯");
+            return;
+        }
+        Manager.ITEMMANAGER.Equip_activate(id, equipment_type);
+
+        Debug.Log("장비 착용 사용");
     }
 
     public void DeActive()
     {
         eq_image.enabled = false;
-        
+        use_image.enabled = false;
         id = -1;
        
     }
