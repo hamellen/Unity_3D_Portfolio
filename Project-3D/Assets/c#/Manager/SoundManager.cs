@@ -5,7 +5,7 @@ using UnityEngine.Animations.Rigging;
 
 public class SoundManager 
 {
-    AudioSource[] audioSources= new AudioSource[(int)Define.Sound.MaxCount];
+    public AudioSource[] audioSources= new AudioSource[(int)Define.Sound.MaxCount];
    
 
     public void Init() {
@@ -85,6 +85,24 @@ public class SoundManager
         }
         
         AudioSource.PlayClipAtPoint(audioClip, position,pitch);
+
+    }
+
+    public void Change_Sound_Value(Define.Sound type, float volume_value) {
+
+        if (type == Define.Sound.Bgm)
+        {
+
+            AudioSource audiosource = audioSources[(int)Define.Sound.Bgm];
+            audiosource.volume = volume_value;
+
+        }
+        else if (type == Define.Sound.D2_Effect)
+        {
+            AudioSource audiosource = audioSources[(int)Define.Sound.D2_Effect];
+            audiosource.volume = volume_value;
+         
+        }
 
     }
 }

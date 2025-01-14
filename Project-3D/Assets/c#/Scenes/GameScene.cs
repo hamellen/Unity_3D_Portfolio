@@ -42,10 +42,9 @@ public class GameScene : BaseScene
         {
             //이벤트시스템 생성
 
-            //resource2.Instantiate("UI/Scene/Basic_UI").name = "Basic_UI";
-            //Manager.RESOURCES.Instantiate("UI/Scene/Basic_UI").name = "Basic_UI";\\
+            
             Manager.UI.ShowBasicUI("Basic_UI");
-            //Manager.UI.ShowPopUI("Pause_UI");
+            
 
             player_controller.inventory_obj= resource2.Instantiate($"UI/Popup/UI_INVENTORY");
             if (player_controller.inventory_obj != null) {

@@ -17,6 +17,8 @@ public class UI_Control : MonoBehaviour, IPointerUpHandler
     public TextMeshProUGUI gold;//무료 재화
     public TextMeshProUGUI cash;//유료 재화
 
+    public AudioClip click_sfx;
+
     bool IsInventoryOpen = false;
 
     public Slider hp_slider;
@@ -37,6 +39,7 @@ public class UI_Control : MonoBehaviour, IPointerUpHandler
     public void Normal_Attack()
     {
         playercontroller.Skill_Attack();
+        Play_sfx();
     }
 
     public void dodge() {
@@ -73,6 +76,18 @@ public class UI_Control : MonoBehaviour, IPointerUpHandler
         Debug.Log("터치 종료 ");
     }
 
+    public void Show_PauseUI() {
+
+        Manager.UI.ShowPopUI("Pause_UI");
+        Play_sfx();
+    }
+
+
+    public void Play_sfx() {
+
+        Manager.SOUNDMANAGER.Play(Define.Sound.D2_Effect, click_sfx,1.0f);
+    }
+
     public void interact_Inventory() {
 
 
@@ -80,11 +95,13 @@ public class UI_Control : MonoBehaviour, IPointerUpHandler
         {
             IsInventoryOpen = true;
             playercontroller.inventory_obj.SetActive(true);
+            Play_sfx();
         }
         else if (IsInventoryOpen == true) {
 
             IsInventoryOpen =false;
             playercontroller.inventory_obj.SetActive(false);
+            Play_sfx();
         }
         
     }

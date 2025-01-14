@@ -662,7 +662,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &6474748688084700256
 MonoBehaviour:
@@ -824,7 +824,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.15
+  m_fontSize: 72
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1247,7 +1247,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17.4
+  m_fontSize: 59.8
   m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1381,7 +1381,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15.05
+  m_fontSize: 52.1
   m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2133,7 +2133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3538838610131145891, guid: 576bd9172d9cf0a48b6b20a253ba5fef, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.47659874
+      value: -0.47660065
       objectReference: {fileID: 0}
     - target: {fileID: 7969712983783901299, guid: 576bd9172d9cf0a48b6b20a253ba5fef, type: 3}
       propertyPath: m_Name
@@ -2141,7 +2141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9112680028102543054, guid: 576bd9172d9cf0a48b6b20a253ba5fef, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.26600838
+      value: -0.26600647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2447,7 +2447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3538838610131145891, guid: 576bd9172d9cf0a48b6b20a253ba5fef, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.47660255
+      value: -0.47660065
       objectReference: {fileID: 0}
     - target: {fileID: 7969712983783901299, guid: 576bd9172d9cf0a48b6b20a253ba5fef, type: 3}
       propertyPath: m_Name
@@ -3683,7 +3683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3538838610131145891, guid: 576bd9172d9cf0a48b6b20a253ba5fef, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.47659874
+      value: -0.47660065
       objectReference: {fileID: 0}
     - target: {fileID: 7969712983783901299, guid: 576bd9172d9cf0a48b6b20a253ba5fef, type: 3}
       propertyPath: m_Name
@@ -3789,7 +3789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3538838610131145891, guid: 576bd9172d9cf0a48b6b20a253ba5fef, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.47660255
+      value: -0.47660065
       objectReference: {fileID: 0}
     - target: {fileID: 7969712983783901299, guid: 576bd9172d9cf0a48b6b20a253ba5fef, type: 3}
       propertyPath: m_Name
@@ -4205,7 +4205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9112680028102543054, guid: 576bd9172d9cf0a48b6b20a253ba5fef, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.26600838
+      value: -0.26601028
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

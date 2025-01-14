@@ -35,7 +35,7 @@ public class DataManager
     public List<D3_ITEM> d3_item_list = new List<D3_ITEM>();
 
     public Player_Stat1 player_stat;
-
+    public Monster_Stat warrior_stat;
     public void Init()
     {
         TextAsset asset=Manager.RESOURCES.Load<TextAsset>($"Data/MonsterStat");
@@ -56,5 +56,6 @@ public class DataManager
         d3_item_list.Add(Manager.RESOURCES.Load<D3_ITEM>("Scriptable/equipment/Dragon_Armor"));//armor
 
         player_stat= Manager.RESOURCES.Load<Player_Stat1>("Scriptable/stat/Player_stat");
+        warrior_stat= Manager.RESOURCES.Load<Monster_Stat>("Scriptable/stat/Warrior_stat");
     }
 }

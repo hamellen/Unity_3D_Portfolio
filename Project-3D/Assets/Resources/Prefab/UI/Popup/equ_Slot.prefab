@@ -302,3 +302,4 @@ MonoBehaviour:
   eq_image: {fileID: 3453837141081134561}
   use_image: {fileID: 2157855612054411758}
   IsUse: 0
+  click_sfx: {fileID: 8300000, guid: f32d8d60f197f204ba10bab042d4cf87, type: 3}

@@ -2,15 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Cysharp.Threading.Tasks;
 using static ItemManager;
 
 public class ItemManager
 {
-   // public delegate void Consumer_Action();
+    //public delegate void Consumer_Action();
     public Action consumer_action;
 
-   // public delegate void Equipment_Action();
+   //public delegate void Equipment_Action();
     public Action equipment_action;
 
     public delegate void UpdateEquip(int index, Define.Equipment equipment);
@@ -49,7 +49,7 @@ public class ItemManager
     public void Apply_Update_Consumer(int id) {//소비재 휙득시 
 
         consumer_dic[id].count++;
-        consumer_action();
+        consumer_action?.Invoke();
 
     }
 
@@ -82,7 +82,7 @@ public class ItemManager
                 consumer_dic[id].count = 0;
             }
             Debug.Log($"{consumer_dic[id].count}");
-            consumer_action();//인벤토리 업데이트 
+            consumer_action?.Invoke();//인벤토리 업데이트 
         }
     }
 
@@ -117,6 +117,6 @@ public class ItemManager
             armor_index++;
 
         }
-        equipment_action();
+        equipment_action?.Invoke();
     }
 }

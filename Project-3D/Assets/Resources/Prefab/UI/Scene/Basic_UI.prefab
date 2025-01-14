@@ -1071,7 +1071,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.35
+  m_fontSize: 72
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1313,6 +1313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: {fileID: 3156411124394275801}
   cash: {fileID: 2318795678755044503}
+  click_sfx: {fileID: 8300000, guid: f32d8d60f197f204ba10bab042d4cf87, type: 3}
   hp_slider: {fileID: 5141228124912486622}
 --- !u!1 &5082431923859962670
 GameObject:
@@ -1442,7 +1443,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.25
+  m_fontSize: 60
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1955,4 +1956,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1582055207165416035}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5838580448602659845}
+        m_TargetAssemblyTypeName: UI_Control, Assembly-CSharp
+        m_MethodName: Show_PauseUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

@@ -5,7 +5,7 @@ using UnityEngine;
 public class UIManager
 {
 
-    int order = 0;
+    int order = 1;
 
     Stack<UI_POPUP> popupStack = new Stack<UI_POPUP>();
     
@@ -26,6 +26,11 @@ public class UIManager
         Manager.RESOURCES.Instantiate($"UI/Scene/{name}");
 
         
+    }
+
+    public void Set_Top_OnActive() {
+
+      
     }
 
     public void ClosePopUp() {

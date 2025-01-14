@@ -15,12 +15,12 @@ public class Monster_Controller : MonoBehaviour
     public List<Reward> reward_list = new List<Reward>();
 
     public int random_range_move;
-    public int random_range_spawn;
+   
     public Transform central_point;
     Animator animator;
     NavMeshAgent agent;
 
-    
+    Weapon weapon;
 
 
     [SerializeField] Transform HpBar;
@@ -33,7 +33,7 @@ public class Monster_Controller : MonoBehaviour
     [SerializeField] LayerMask view_layermask = 0;
 
     public bool IsChased;
-    public int spooted_figure;
+    
     public MONSTER_STAT monster_stat;
 
 
@@ -42,9 +42,7 @@ public class Monster_Controller : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        monster_stat = GetComponent<MONSTER_STAT>();
-        agent.speed = monster_stat.SPEED;
-
+      
         camera = Camera.main;
 
         //player_stat = FindObjectOfType<PlayerController>().player_stat;
@@ -52,9 +50,10 @@ public class Monster_Controller : MonoBehaviour
        
        
         slider = GetComponentInChildren<Slider>();
-        
 
-        
+        monster_stat = GetComponent<MONSTER_STAT>();
+        agent.speed = monster_stat.SPEED;
+        weapon = GetComponentInChildren<Weapon>();
         //if (Manager.DATAMANAGER.StatDict.TryGetValue(1,out stat)){
 
         //    monster_stat.HP = stat.hp;
@@ -74,10 +73,11 @@ public class Monster_Controller : MonoBehaviour
             monster_stat.HP = Mathf.Clamp(monster_stat.HP- Manager.DATAMANAGER.player_stat.ATTACK, 0, monster_stat.MAXHP);//문제 있음 
             slider.value = (monster_stat.HP / monster_stat.MAXHP);
             if (monster_stat.HP == 0) {
-                animator.SetBool("IsDead", true);
+                //animator.SetBool("IsDead", true);
                 FindObjectOfType<PlayerController>().ApplyEvent(Define.Player_type.GOLD, monster_stat.reward_gold);
-                Destroy(gameObject, 5.0f);
+                
                 Generate_reward();
+                Destroy(gameObject, 1.0f);
             }
         }
     }
@@ -86,7 +86,7 @@ public class Monster_Controller : MonoBehaviour
 
         animator.SetTrigger("Monster_Attack");
         attack(Define.Monster_State.ATTACK);
-        agent.speed = 0;
+        agent.isStopped=true;
         
     }
 
@@ -97,12 +97,13 @@ public class Monster_Controller : MonoBehaviour
         foreach (Reward reward in reward_list) {
 
             Reward_control control = reward.lootbox.GetComponent<Reward_control>();
-            control.reward_base = reward;
+           
             if (reward.type == Define.ItemType.Consumable)
             {
                 Reward_con reward_con = reward as Reward_con;
+                control.reward_base = reward_con;
                 control.text_GUI.text = Manager.ITEMMANAGER.consumer_dic[reward_con.id].name;
-
+                
 
                 resource.Instantiate(reward.lootbox, transform);
 
@@ -111,6 +112,7 @@ public class Monster_Controller : MonoBehaviour
             else if (reward.type == Define.ItemType.Equipment) {//장비 
 
                 Reward_equ reward_equ = reward as Reward_equ;
+                control.reward_base = reward_equ;
                 control.text_GUI.text = reward_equ.name;
 
                 resource.Instantiate(reward.lootbox, transform);
@@ -119,12 +121,18 @@ public class Monster_Controller : MonoBehaviour
         }
     
     }
-    
-    public void ResetAttack() {
+    public void Active_weapon() {
 
-        attack(Define.Monster_State.IDLE);
-        agent.speed = monster_stat.SPEED;
+        weapon.Active_weapon();
+    
     }
+
+    public void DeActive_weapon() {
+
+        weapon.DeActive_weapon();
+    
+    }
+   
 
     // Update is called once per frame
     void Update()
@@ -144,19 +152,19 @@ public class Monster_Controller : MonoBehaviour
 
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
-            Debug.Log("순찰중");
+            
             Vector3 point;
 
             if (RandomPoint(central_point.position, random_range_move, out point))
             {
                 Debug.Log("랜덤 위치 탐색 성공");
                 agent.SetDestination(point);
-                animator.SetBool("IsMove", true);
+                animator.SetFloat("Speed",5);
             }
             else
             {
                 Debug.Log("랜덤 위치 탐색 실패");
-                animator.SetBool("IsMove", false);
+                animator.SetFloat("Speed", 5);
                 
             }
         }
@@ -166,7 +174,7 @@ public class Monster_Controller : MonoBehaviour
 
     bool RandomPoint(Vector3 center,float range,out Vector3 result) {
 
-        Vector3 randomPoint = transform.position + Random.insideUnitSphere * range;
+        Vector3 randomPoint = central_point.position + Random.insideUnitSphere * range;
         NavMeshHit hit;
 
         if (NavMesh.SamplePosition(randomPoint, out hit, 5.0f, NavMesh.GetAreaFromName("walkable"))) {
@@ -191,13 +199,14 @@ public class Monster_Controller : MonoBehaviour
             //Debug.Log("순찰중");
             Patrol();
             IsChased = false;
-            spooted_figure = cols.Length;
+            animator.SetBool("IsChased", false);
+
         }
 
         if (cols.Length > 0)//플레이어 탐지 
         {
             Debug.Log("플레이어 탐지중");
-            spooted_figure = cols.Length;
+            
             Transform spotted_player = cols[0].transform;
 
             Vector3 spotted_direction = (spotted_player.position - transform.position).normalized;
@@ -211,18 +220,23 @@ public class Monster_Controller : MonoBehaviour
                     {
                         
                         IsChased = true;
-                        animator.SetBool("IsMove", true);
+                        animator.SetFloat("Speed",5);
+                        animator.SetBool("IsChased", true);
                         
-                        Debug.Log("몬스터 추격중");
                         agent.SetDestination(hit.transform.position);
 
                         if (Vector3.Distance(transform.position, hit.transform.position) <= attack_distance) {
-                            Attack();
+                            //Attack();
                         }
 
                         //navMeshAgent.SetDestination(hit.transform.position);
                     }
                 }
+                
+            }
+            else
+            {
+                Patrol();
             }
         }
     }

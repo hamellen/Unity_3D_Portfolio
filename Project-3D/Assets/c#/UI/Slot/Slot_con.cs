@@ -16,7 +16,7 @@ public class Slot_con : MonoBehaviour
 
     public Image con_image;
     public TextMeshProUGUI figure_count;
-
+    public AudioClip click_sfx;
     public void State_Update(IMAGE_ITEM itemdata)
     {
 
@@ -42,9 +42,15 @@ public class Slot_con : MonoBehaviour
             return;
         }
         Manager.ITEMMANAGER.Use_Consumer(consume_type, id);
-
+        Play_sfx();
         Debug.Log("소비재 사용");
     
+    }
+
+    public void Play_sfx()
+    {
+
+        Manager.SOUNDMANAGER.Play(Define.Sound.D2_Effect, click_sfx, 1.0f);
     }
     public void DeActive()
     {

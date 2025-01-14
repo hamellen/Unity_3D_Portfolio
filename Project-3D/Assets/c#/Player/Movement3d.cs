@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 using static UnityEngine.Rendering.DebugUI;
 
 public class Movement3d : MonoBehaviour
@@ -17,7 +18,8 @@ public class Movement3d : MonoBehaviour
     public Transform cam;
     public float movespeed = 5.0f;
     private Animator animator;
-
+    public bool CanMove = true;
+    PlayerController controller;
 
     public float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
@@ -42,10 +44,10 @@ public class Movement3d : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-
+        controller = GetComponent<PlayerController>();
         cam = Camera.main.transform;
 
-        movespeed = GetComponent<PLAYER_STAT>().SPEED;
+        movespeed = controller.stat.SPEED;
     }
 
     public void ActiveMovementEnd(InputAction.CallbackContext value) {
@@ -55,8 +57,10 @@ public class Movement3d : MonoBehaviour
 
     public void ActiveMovement(InputAction.CallbackContext value)
     {
-
-        moveDirection2d = value.ReadValue<Vector2>();
+        if (CanMove) {
+            moveDirection2d = value.ReadValue<Vector2>();
+        }
+       
        
     }
 

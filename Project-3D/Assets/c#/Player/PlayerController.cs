@@ -3,23 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using Cysharp.Threading.Tasks;
+using UnityEditor.Rendering;
 public class PlayerController : MonoBehaviour
 {
 
     
     public Action hp_event;
     public Action gold_event;
-
+    Movement3d movement3D;
     private Animator animator;
 
-    private PlayerInput playerinput;
+    //private PlayerInput playerinput;
 
     public Weapon weapon;//무기 피격 탐지용
 
     public Player_Stat1 stat;
 
     public GameObject inventory_obj;
+
+    public AudioClip heal_sfx;
 
     //public PLAYER_STAT player_stat;
     //public Equipment current_weapon;
@@ -30,7 +33,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        playerinput = new PlayerInput();
+        //playerinput = new PlayerInput();
         weapon = GetComponentInChildren<Weapon>();
 
         //foot_sfx = Manager.RESOURCES.Load<AudioClip>("SFX/Footsteps - Essentials/Footsteps_Grass/Footsteps_Grass_Run/Footsteps_Grass_Run_11");
@@ -41,13 +44,14 @@ public class PlayerController : MonoBehaviour
         
     }
 
+   
     public void Skill_Attack() {
 
 
         Debug.Log("콤보 공격");
         animator.SetTrigger("Skill");
         weapon.Active_weapon();
-
+        movement3D.CanMove = false;
     }
 
     public void ApplayDamage(int damage) {
@@ -75,9 +79,9 @@ public class PlayerController : MonoBehaviour
         else if (type == Define.Player_type.HEALING) {
 
             stat.HP = Mathf.Clamp(stat.HP + figure, 0, stat.MAXHP);
-            
-            heal.Stop();
-            heal.Play();
+
+            PlayVfxHeal().Forget();
+            Manager.SOUNDMANAGER.Play(Define.Sound.D2_Effect, heal_sfx, 1.0f);
             hp_event();
         }
     
@@ -87,6 +91,7 @@ public class PlayerController : MonoBehaviour
     public void End_Attack() {
 
         weapon.DeActive_weapon();
+        movement3D.CanMove = true;
     }
     public void FootStep() {
 
@@ -96,7 +101,7 @@ public class PlayerController : MonoBehaviour
     
     }
 
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -104,6 +109,7 @@ public class PlayerController : MonoBehaviour
         stat = Manager.DATAMANAGER.player_stat;
         heal.Stop();
         Manager.ITEMMANAGER.activeconsumer += ApplyEvent;
+        movement3D = GetComponent<Movement3d>();
 
         if (Manager.ITEMMANAGER.current_weapon == null) {
 
@@ -112,6 +118,13 @@ public class PlayerController : MonoBehaviour
         if (Manager.ITEMMANAGER.current_armor == null) {
             Debug.Log("장착 방어구 없음");
         }
+    }
+
+    public async UniTaskVoid PlayVfxHeal() {
+        
+        heal.Play();
+        await UniTask.Delay(2000);
+        heal.Stop();
     }
 
     // Update is called once per frame

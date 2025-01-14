@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -21,6 +22,7 @@ public class Reward_control : MonoBehaviour
         camera = Camera.main;
         lightning_vfx = GetComponentInChildren<ParticleSystem>();
         lightning_vfx.Play();
+        transform.position = transform.position + new Vector3(Random.Range(-3,3),3, Random.Range(-3, 3));
     }
 
     // Update is called once per frame
