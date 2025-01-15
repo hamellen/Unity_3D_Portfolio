@@ -11,7 +11,7 @@ public class Moster_Attack : MonoBehaviour
     private void Start()
     {
         monster_controller = GetComponentInParent<Monster_Controller>();
-        monster_controller.attack += Update_State;
+        //monster_controller.attack += Update_State;
         collider = GetComponent<CapsuleCollider>();
         collider.enabled = false;//시작시 초기화
     }

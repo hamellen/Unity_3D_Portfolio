@@ -15,11 +15,11 @@ public class Manager : MonoBehaviour
 
     UIManager ui = new UIManager();
     ResourcesManager resourcesManager = new ResourcesManager();
-    SceneManagerEx scenemanager = new SceneManagerEx();
-    SoundManager soundManager = new SoundManager();
-     DataManager dataManager = new DataManager();
-    ItemManager itemManager = new ItemManager();
-
+    SceneManagerEx scenemanager = new SceneManagerEx();//씬 전환
+    SoundManager soundManager = new SoundManager();//소리 
+     DataManager dataManager = new DataManager();//데이터 보관
+    ItemManager itemManager = new ItemManager();//실질적 아이템 현황
+    TokenManager tokenManager = new TokenManager();
     public PlayerController playerController;
 
     public static DataManager DATAMANAGER { get { return manager.dataManager; } }
@@ -36,7 +36,7 @@ public class Manager : MonoBehaviour
 
     public static SoundManager SOUNDMANAGER { get { return manager.soundManager; } }
 
-   
+    public static TokenManager TOKENMANAGER { get { return manager.tokenManager; } }
     static void Init() {
 
 

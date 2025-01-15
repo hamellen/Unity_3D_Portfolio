@@ -101,7 +101,13 @@ public class PlayerController : MonoBehaviour
     
     }
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Monster_Attack") {
+
+            ApplyEvent(Define.Player_type.DAMAGE, other.gameObject.GetComponent<Weapon>().damage);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Schema;
@@ -9,8 +10,7 @@ using UnityEngine.UI;
 public class Monster_Controller : MonoBehaviour
 {
 
-    public delegate void Attack_Event(Define.Monster_State state);
-    public event Attack_Event attack;
+    
 
     public List<Reward> reward_list = new List<Reward>();
 
@@ -22,6 +22,7 @@ public class Monster_Controller : MonoBehaviour
 
     Weapon weapon;
 
+    public Auto_Gen auto_gen;
 
     [SerializeField] Transform HpBar;
     [SerializeField] Camera camera;
@@ -42,14 +43,14 @@ public class Monster_Controller : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-      
+        auto_gen = GetComponentInParent<Auto_Gen>();
         camera = Camera.main;
 
         //player_stat = FindObjectOfType<PlayerController>().player_stat;
         //player_stat = Manager.DATAMANAGER.player_stat;
-       
-       
-        slider = GetComponentInChildren<Slider>();
+
+        central_point = transform.parent;
+         slider = GetComponentInChildren<Slider>();
 
         monster_stat = GetComponent<MONSTER_STAT>();
         agent.speed = monster_stat.SPEED;
@@ -72,12 +73,13 @@ public class Monster_Controller : MonoBehaviour
             Debug.Log("피격당함");
             monster_stat.HP = Mathf.Clamp(monster_stat.HP- Manager.DATAMANAGER.player_stat.ATTACK, 0, monster_stat.MAXHP);//문제 있음 
             slider.value = (monster_stat.HP / monster_stat.MAXHP);
-            if (monster_stat.HP == 0) {
+            if (monster_stat.HP == 0)
+            {
+                Generate_reward().Forget();
                 //animator.SetBool("IsDead", true);
                 FindObjectOfType<PlayerController>().ApplyEvent(Define.Player_type.GOLD, monster_stat.reward_gold);
-                
-                Generate_reward();
-                Destroy(gameObject, 1.0f);
+                auto_gen.Dequeue();
+                Destroy(gameObject);
             }
         }
     }
@@ -85,12 +87,14 @@ public class Monster_Controller : MonoBehaviour
     public void Attack() {
 
         animator.SetTrigger("Monster_Attack");
-        attack(Define.Monster_State.ATTACK);
+        //attack(Define.Monster_State.ATTACK);
         agent.isStopped=true;
-        
+       
+
+
     }
 
-    public void Generate_reward() {
+    public async UniTaskVoid Generate_reward() {
 
         var resource= FindObjectOfType<Resource>();
 
@@ -124,13 +128,14 @@ public class Monster_Controller : MonoBehaviour
     public void Active_weapon() {
 
         weapon.Active_weapon();
-    
+        Debug.Log("몬스터 무기 활성화");
     }
 
     public void DeActive_weapon() {
 
         weapon.DeActive_weapon();
-    
+        agent.isStopped = false;
+        Debug.Log("몬스터 무기 활성화 해제");
     }
    
 
@@ -144,8 +149,8 @@ public class Monster_Controller : MonoBehaviour
         //-----------------------------------------------------
 
         Sight();
-
         
+
     }
 
     public void Patrol() {
@@ -164,7 +169,7 @@ public class Monster_Controller : MonoBehaviour
             else
             {
                 Debug.Log("랜덤 위치 탐색 실패");
-                animator.SetFloat("Speed", 5);
+                animator.SetFloat("Speed", 0);
                 
             }
         }
@@ -226,10 +231,10 @@ public class Monster_Controller : MonoBehaviour
                         agent.SetDestination(hit.transform.position);
 
                         if (Vector3.Distance(transform.position, hit.transform.position) <= attack_distance) {
-                            //Attack();
+                            Attack();
                         }
 
-                        //navMeshAgent.SetDestination(hit.transform.position);
+                       
                     }
                 }
                 
@@ -237,6 +242,8 @@ public class Monster_Controller : MonoBehaviour
             else
             {
                 Patrol();
+                IsChased = false;
+                animator.SetBool("IsChased", false);
             }
         }
     }

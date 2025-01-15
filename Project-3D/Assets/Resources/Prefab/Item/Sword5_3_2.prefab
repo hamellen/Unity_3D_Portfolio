@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 175634517248227835}
   m_Layer: 0
   m_Name: Sword5_3_2
-  m_TagString: Untagged
+  m_TagString: Monster_Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: 0
-  damage: 10
+  damage: 30
   boxcollider: {fileID: 0}
 --- !u!65 &175634517248227835
 BoxCollider:
