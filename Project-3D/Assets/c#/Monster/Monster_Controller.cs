@@ -36,8 +36,8 @@ public class Monster_Controller : MonoBehaviour
     public bool IsChased;
     
     public MONSTER_STAT monster_stat;
-
-
+    public GameObject player;
+    public float slider_detected;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +45,7 @@ public class Monster_Controller : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         auto_gen = GetComponentInParent<Auto_Gen>();
         camera = Camera.main;
-
+        player = GameObject.FindGameObjectWithTag("Player");
         //player_stat = FindObjectOfType<PlayerController>().player_stat;
         //player_stat = Manager.DATAMANAGER.player_stat;
 
@@ -149,7 +149,7 @@ public class Monster_Controller : MonoBehaviour
         //-----------------------------------------------------
 
         Sight();
-        
+       
 
     }
 

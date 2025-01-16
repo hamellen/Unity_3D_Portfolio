@@ -3269,7 +3269,7 @@ Transform:
   m_GameObject: {fileID: 4371503857025909851}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -58.022354, y: 1.0205342, z: 70.94266}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3318,6 +3318,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a1f33436863958f4a8b10f5b38986946, type: 2}
   random_range_move: 10
   central_point: {fileID: 0}
+  auto_gen: {fileID: 0}
   HpBar: {fileID: 4272219320404055144}
   camera: {fileID: 0}
   slider: {fileID: 0}
@@ -3329,6 +3330,8 @@ MonoBehaviour:
     m_Bits: 8
   IsChased: 0
   monster_stat: {fileID: 0}
+  player: {fileID: 0}
+  slider_detected: 50
 --- !u!114 &1826098874972150150
 MonoBehaviour:
   m_ObjectHideFlags: 0

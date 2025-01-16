@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Cysharp.Threading.Tasks;
 using UnityEditor.Rendering;
+using Cinemachine;
+using UnityEngine.InputSystem.EnhancedTouch;
+
 public class PlayerController : MonoBehaviour
 {
 
@@ -22,6 +25,9 @@ public class PlayerController : MonoBehaviour
 
     public GameObject inventory_obj;
 
+    public CinemachineFreeLook free_camera;
+   
+    
     public AudioClip heal_sfx;
 
     //public PLAYER_STAT player_stat;
@@ -35,16 +41,22 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         //playerinput = new PlayerInput();
         weapon = GetComponentInChildren<Weapon>();
-
+        
         //foot_sfx = Manager.RESOURCES.Load<AudioClip>("SFX/Footsteps - Essentials/Footsteps_Grass/Footsteps_Grass_Run/Footsteps_Grass_Run_11");
     }
 
     private void OnEnable()
     {
-        
+        EnhancedTouchSupport.Enable();
+        TouchSimulation.Enable();
     }
 
-   
+    private void OnDisable()
+    {
+        EnhancedTouchSupport.Disable();
+        TouchSimulation.Disable();
+    }
+
     public void Skill_Attack() {
 
 
@@ -60,8 +72,7 @@ public class PlayerController : MonoBehaviour
         hp_event();
     }
 
-    
-
+   
     public void ApplyEvent(Define.Player_type type, int figure) {
 
         if (type == Define.Player_type.GOLD)
@@ -124,6 +135,7 @@ public class PlayerController : MonoBehaviour
         if (Manager.ITEMMANAGER.current_armor == null) {
             Debug.Log("장착 방어구 없음");
         }
+        //free_camera.m_XAxis.VA
     }
 
     public async UniTaskVoid PlayVfxHeal() {

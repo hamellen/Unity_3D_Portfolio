@@ -28,7 +28,7 @@ public class Auto_Gen : MonoBehaviour
 
         while( spawn_list.Count < max_object) {
             await UniTask.Delay(spawn_intarval * 1000);
-            GameObject go = Manager.RESOURCES.Instantiate_object(spawn_prefab);
+            GameObject go = Manager.RESOURCES.Instantiate_object(spawn_prefab,transform);
             spawn_list.Enqueue(go);
             go.transform.parent = transform;
            
