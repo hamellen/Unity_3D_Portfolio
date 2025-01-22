@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 
 
-public class UI_Control : MonoBehaviour, IPointerUpHandler
+public class UI_Control : MonoBehaviour
 {
 
     private PlayerController playercontroller;
@@ -21,19 +21,24 @@ public class UI_Control : MonoBehaviour, IPointerUpHandler
 
     bool IsInventoryOpen = false;
 
+    public GameObject Btn_merchant;
+    bool IsMerchant = false;
+
     public Slider hp_slider;
     // Start is called before the first frame update
     void Start()
     {
         playercontroller = FindObjectOfType<PlayerController>();
         normal_attack = FindObjectOfType<NormalAttack>();
-
+        Manager.UI.MerChantBtn += Interaction_Merchant;
+        Manager.UI.InventoryBtn += interact_Inventory;
         playercontroller.hp_event += Update_Hp;
         playercontroller.gold_event += Update_Gold;
         gold.text = $"{playercontroller.stat.GOLD}";
         cash.text = $"{playercontroller.stat.Cash}";
 
         hp_slider.value = (playercontroller.stat.HP / playercontroller.stat.MAXHP);
+        Btn_merchant.SetActive(false);
     }
 
     public void Normal_Attack()
@@ -71,9 +76,17 @@ public class UI_Control : MonoBehaviour, IPointerUpHandler
     void Update_Gold() {
         gold.text = $"{playercontroller.stat.GOLD}";
     }
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        Debug.Log("터치 종료 ");
+    public void Interaction_Merchant() {
+
+        if (!IsMerchant)
+        {
+            Btn_merchant.SetActive(true);
+            IsMerchant = true;
+        }
+        else if (IsMerchant) {
+            Btn_merchant.SetActive(false);
+            IsMerchant = false;
+        }
     }
 
     public void Show_PauseUI() {
@@ -81,13 +94,18 @@ public class UI_Control : MonoBehaviour, IPointerUpHandler
         Manager.UI.ShowPopUI("Pause_UI");
         Play_sfx();
     }
+    public void Show_Shop() {
 
+        Manager.UI.ShowPopUI("CashShop");
+        Play_sfx();
+    }
 
     public void Play_sfx() {
 
         Manager.SOUNDMANAGER.Play(Define.Sound.D2_Effect, click_sfx,1.0f);
     }
 
+   
     public void interact_Inventory() {
 
 

@@ -20,7 +20,7 @@ public class Manager : MonoBehaviour
      DataManager dataManager = new DataManager();//데이터 보관
     ItemManager itemManager = new ItemManager();//실질적 아이템 현황
     TokenManager tokenManager = new TokenManager();
-    public PlayerController playerController;
+    //public PlayerController playerController;
 
     public static DataManager DATAMANAGER { get { return manager.dataManager; } }
 
@@ -48,7 +48,7 @@ public class Manager : MonoBehaviour
         manager.soundManager.Init();//사운드 매니저 초기화
         manager.itemManager.Init();
 
-        Debug.Log($"ITEM DATABASE COUNT:{manager.dataManager.image_item_list.Count}");
+        //Debug.Log($"ITEM DATABASE COUNT:{manager.dataManager.image_item_list.Count}");
 
     }
 
@@ -67,7 +67,7 @@ public class Manager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-        playerController = FindObjectOfType<PlayerController>();
+        //playerController = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame

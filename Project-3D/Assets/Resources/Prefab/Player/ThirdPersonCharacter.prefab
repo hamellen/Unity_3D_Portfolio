@@ -835,6 +835,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
     - target: {fileID: 262509346482907907, guid: ec9b9c51792c2194e9963decd6e4262b, type: 3}
+      propertyPath: attack_sfx
+      value: 
+      objectReference: {fileID: 8300000, guid: f11db4559b3ffff45b62e9327fc5535d, type: 3}
+    - target: {fileID: 262509346482907907, guid: ec9b9c51792c2194e9963decd6e4262b, type: 3}
       propertyPath: free_camera
       value: 
       objectReference: {fileID: 4116521494027884373}

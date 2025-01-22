@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using DG.Tweening;
 
 public class inventory_controller : MonoBehaviour
 {
@@ -21,10 +22,19 @@ public class inventory_controller : MonoBehaviour
     {
         slot_con_array = GetComponentsInChildren<Slot_con>();
         slot_equ_array = GetComponentsInChildren<Slot_eq>();
+        DOTween.Init();
     }
 
     private void Start()
     {
+
+       
+
+        transform.localScale = Vector3.one * 0.1f;
+        gameObject.SetActive(false);
+
+
+        
         Manager.ITEMMANAGER.consumer_action += Apply_inventory_consumer_value;
         Manager.ITEMMANAGER.equipment_action += Apply_inventory_equipment_value;
         Manager.ITEMMANAGER.update_equip += Change_Equip;
@@ -52,6 +62,15 @@ public class inventory_controller : MonoBehaviour
     {
         con_slot_list.SetActive(true);
         equ_slot_list.SetActive(false);
+    }
+
+    
+
+    public void Hide()
+    {
+
+       
+       
     }
 
     public void Apply_inventory_consumer_value() {
@@ -162,6 +181,7 @@ public class inventory_controller : MonoBehaviour
     public void close() {
 
         gameObject.SetActive(false);
+        Manager.UI.InventoryBtn();
     }
 
     

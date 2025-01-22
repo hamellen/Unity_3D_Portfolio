@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,11 +6,12 @@ using UnityEngine;
 public class UIManager
 {
 
-    int order = 1;
+    int order = 0;
 
     Stack<UI_POPUP> popupStack = new Stack<UI_POPUP>();
-    
-    
+
+    public Action MerChantBtn;
+    public Action InventoryBtn;
 
     public UI_POPUP ShowPopUI(string name)  {
         order++;

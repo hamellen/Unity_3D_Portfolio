@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LoginScene : BaseScene
 {
+
+    public AudioClip login_bgm;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,7 @@ public class LoginScene : BaseScene
 
         scenetype = Define.Scene.Login;
 
+        Manager.SOUNDMANAGER.Play(Define.Sound.Bgm, login_bgm, 1.0f);
 
         //게임시작시 주요 ui 생성
     }

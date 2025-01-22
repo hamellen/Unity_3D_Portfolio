@@ -22,6 +22,7 @@ public class Monster_Controller : MonoBehaviour
 
     Weapon weapon;
 
+    public AudioClip hit_sfx;
     public Auto_Gen auto_gen;
 
     [SerializeField] Transform HpBar;
@@ -70,6 +71,7 @@ public class Monster_Controller : MonoBehaviour
         if (other.gameObject.tag == "Weapon") {
 
             transform.LookAt(other.gameObject.transform.position);
+            Manager.SOUNDMANAGER.Play(Define.Sound.D2_Effect, hit_sfx, 1.0f);
             Debug.Log("피격당함");
             monster_stat.HP = Mathf.Clamp(monster_stat.HP- Manager.DATAMANAGER.player_stat.ATTACK, 0, monster_stat.MAXHP);//문제 있음 
             slider.value = (monster_stat.HP / monster_stat.MAXHP);

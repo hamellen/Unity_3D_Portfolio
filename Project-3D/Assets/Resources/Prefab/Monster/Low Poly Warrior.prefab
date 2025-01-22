@@ -3316,8 +3316,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ee5a93f8114451d4c99e9ccbab725537, type: 2}
   - {fileID: 11400000, guid: 2a83b609d44aebf4285b5d5813bbb21d, type: 2}
   - {fileID: 11400000, guid: a1f33436863958f4a8b10f5b38986946, type: 2}
+  - {fileID: 11400000, guid: fdcfedf4dae1d2346a092a95fafbe50b, type: 2}
   random_range_move: 10
   central_point: {fileID: 0}
+  hit_sfx: {fileID: 8300000, guid: 04713ce31ba1c3546bc4bc7be8d754df, type: 3}
   auto_gen: {fileID: 0}
   HpBar: {fileID: 4272219320404055144}
   camera: {fileID: 0}
