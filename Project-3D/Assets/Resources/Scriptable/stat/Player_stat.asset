@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dcbcb6020a98164a889e559d9d6e99c, type: 3}
   m_Name: Player_stat
   m_EditorClassIdentifier: 
-  LEVEL: 1
-  HP: 200
-  MAXHP: 200
-  ATTACK: 20
-  DEFENCE: 5
-  SPEED: 5
+  LEVEL: 0
+  HP: 0
+  MAXHP: 0
+  ATTACK: 0
+  DEFENCE: 0
+  SPEED: 0
   EXP: 0
-  GOLD: 100
+  GOLD: 0
   Cash: 0
+  Asked_max_exp: 0

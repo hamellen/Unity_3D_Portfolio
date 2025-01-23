@@ -57,5 +57,7 @@ public class DataManager
 
         player_stat= Manager.RESOURCES.Load<Player_Stat1>("Scriptable/stat/Player_stat");
         warrior_stat= Manager.RESOURCES.Load<Monster_Stat>("Scriptable/stat/Warrior_stat");
+
+       
     }
 }

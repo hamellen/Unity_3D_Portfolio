@@ -19,17 +19,19 @@ public class UI_Login : MonoBehaviour
 
     public void LoginActive() {
 
-         var bro=BackendLogin.instance.CustomLogin(id_input.text, pw_input.text);
+         var bro=Manager.BACKENDLOGIN.CustomLogin(id_input.text, pw_input.text);
 
         if (bro.IsSuccess()) {
             //UI_LoadinScene.LoadingScene("Stage1");
             Manager.SCENEMANAGER.LoadScene("Stage1");
+            Manager.BACKENDGAMEDATA.GameDataGet();//데이터 플레이어한테 적용
         }
         
     }
 
     public void SignUpActive() {
 
-        BackendLogin.instance.CustomSignUp(id_input.text, pw_input.text);
+        Manager.BACKENDLOGIN.CustomSignUp(id_input.text, pw_input.text);
+        Manager.BACKENDGAMEDATA.GameDataInsert();//초기 데이터 설정
     }
 }

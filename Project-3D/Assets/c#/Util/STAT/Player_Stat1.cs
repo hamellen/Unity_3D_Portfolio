@@ -16,5 +16,5 @@ public class Player_Stat1 : ScriptableObject
     public int EXP;  // °æÇèÄ¡
     public int GOLD ; // È×µæÀçÈ­
     public int Cash;
-
+    public int Asked_max_exp;
 }

@@ -70,12 +70,14 @@ public class PlayerController : MonoBehaviour
         {
 
             Manager.DATAMANAGER.player_stat.GOLD += figure;
+            Manager.BACKENDGAMEDATA.Update_info(Define.PlayerData.GOLD, figure);
             gold_event();
         }
         else if (type == Define.Player_type.DAMAGE)
         {
 
             stat.HP = Mathf.Clamp(stat.HP - figure, 0, stat.MAXHP);
+            Manager.BACKENDGAMEDATA.Update_info(Define.PlayerData.HP, -figure);
             hp_event();
         }
         else if (type == Define.Player_type.HEALING) {
@@ -84,12 +86,13 @@ public class PlayerController : MonoBehaviour
 
             PlayVfxHeal().Forget();
             Manager.SOUNDMANAGER.Play(Define.Sound.D2_Effect, heal_sfx, 1.0f);
+            Manager.BACKENDGAMEDATA.Update_info(Define.PlayerData.HP, figure);
             hp_event();
         }
     
     }
 
-   
+    
 
     public void End_Attack() {
 
@@ -128,8 +131,22 @@ public class PlayerController : MonoBehaviour
             Debug.Log("장착 방어구 없음");
         }
 
-       
-        //free_camera.m_XAxis.VA
+        if (Manager.BACKENDGAMEDATA.UserData.count_weapon > 0)//서버에서 받아온 데이터 클라이언트에 적용
+        {
+            Manager.ITEMMANAGER.ServerData_Initialize_equ(Define.Equipment.Weapon, Manager.BACKENDGAMEDATA.UserData.count_weapon);
+
+        }
+
+        if (Manager.BACKENDGAMEDATA.UserData.count_armor > 0)//서버에서 받아온 데이터 클라이언트에 적용
+        {
+            Manager.ITEMMANAGER.ServerData_Initialize_equ(Define.Equipment.Armor, Manager.BACKENDGAMEDATA.UserData.count_armor);
+
+        }
+
+        for (int i = 0; i < Manager.ITEMMANAGER.consumer_dic.Count; i++) {
+
+            Manager.ITEMMANAGER.consumer_dic[i].count = Manager.BACKENDGAMEDATA.UserData.list_consum[i];
+        }
     }
 
     public async UniTaskVoid PlayVfxHeal() {

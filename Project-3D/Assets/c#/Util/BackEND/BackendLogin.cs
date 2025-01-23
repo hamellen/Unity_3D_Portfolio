@@ -5,19 +5,7 @@ using BackEnd;
 
 public class BackendLogin 
 {
-    static BackendLogin _instance = null;
-
-    public static BackendLogin instance
-    {
-        get {
-
-            if (_instance == null) {
-                _instance = new BackendLogin();
-            }
-            return _instance;
-        }
     
-    }
 
     public void CustomSignUp(string id, string pw) {
         Debug.Log("회원가입을 요청합니다.");

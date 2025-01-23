@@ -51,4 +51,8 @@ public class Define
         Healing   
      }
 
+    public enum PlayerData {
+        LEVEL,HP,MAXHP,ATK,SPEED,GOLD,EXP,WEAPON,ARMOR
+    }
+   
 }

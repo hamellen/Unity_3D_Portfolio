@@ -19,17 +19,20 @@ public class Manager : MonoBehaviour
     SoundManager soundManager = new SoundManager();//소리 
      DataManager dataManager = new DataManager();//데이터 보관
     ItemManager itemManager = new ItemManager();//실질적 아이템 현황
-    TokenManager tokenManager = new TokenManager();
+    TokenManager tokenManager = new TokenManager();//UniTask 중단 설정
+    BackendManager backendManager = new BackendManager();
+    BackendLogin backendLogin = new BackendLogin();
+    BackendGameData backend_gamedata = new BackendGameData();
     //public PlayerController playerController;
 
     public static DataManager DATAMANAGER { get { return manager.dataManager; } }
 
     public static ItemManager ITEMMANAGER { get { return manager.itemManager; } }
 
-
+    public static BackendGameData BACKENDGAMEDATA { get { return manager.backend_gamedata; } }
     public static UIManager UI { get { return manager.ui; } }
 
- 
+    public static BackendLogin BACKENDLOGIN { get { return manager.backendLogin; } }
     public static ResourcesManager RESOURCES { get { return manager.resourcesManager; } }
 
     public static SceneManagerEx SCENEMANAGER { get { return manager.scenemanager; } }
@@ -42,11 +45,15 @@ public class Manager : MonoBehaviour
 
 
         manager = FindObjectOfType<Manager>();
+        manager.backendManager.Initilize();//뒤끝 초기화
 
+        manager.backend_gamedata.GameDataGet();//데이터 불러오기
 
         manager.dataManager.Init();//데이터 매니저 초기화
         manager.soundManager.Init();//사운드 매니저 초기화
         manager.itemManager.Init();
+
+       
 
         //Debug.Log($"ITEM DATABASE COUNT:{manager.dataManager.image_item_list.Count}");
 
@@ -60,13 +67,14 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         Init();//static  함수 
         if (manager != null)
         {
             Debug.Log("매니저 로드 성공");
         }
 
-        DontDestroyOnLoad(gameObject);
+       
         //playerController = FindObjectOfType<PlayerController>();
     }
 

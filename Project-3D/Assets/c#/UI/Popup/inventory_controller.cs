@@ -27,14 +27,7 @@ public class inventory_controller : MonoBehaviour
 
     private void Start()
     {
-
-       
-
-        transform.localScale = Vector3.one * 0.1f;
-        gameObject.SetActive(false);
-
-
-        
+ 
         Manager.ITEMMANAGER.consumer_action += Apply_inventory_consumer_value;
         Manager.ITEMMANAGER.equipment_action += Apply_inventory_equipment_value;
         Manager.ITEMMANAGER.update_equip += Change_Equip;

@@ -54,7 +54,7 @@ public class GameScene : BaseScene
             }
            
         }
-
+        //Initilize_player_data();
         Manager.SOUNDMANAGER.Play(Define.Sound.Bgm, Bgm_clip, 1.0f);
     }
 
@@ -64,5 +64,16 @@ public class GameScene : BaseScene
         
     }
 
-   
+    public void Initilize_player_data() {
+
+        player_controller.stat.LEVEL = Manager.BACKENDGAMEDATA.UserData.level;
+        player_controller.stat.HP = Manager.BACKENDGAMEDATA.UserData.hp;
+        player_controller.stat.MAXHP = Manager.BACKENDGAMEDATA.UserData.MaxHp;
+        player_controller.stat.ATTACK = Manager.BACKENDGAMEDATA.UserData.atk;
+        player_controller.stat.DEFENCE = Manager.BACKENDGAMEDATA.UserData.defence;
+        player_controller.stat.SPEED = Manager.BACKENDGAMEDATA.UserData.speed;
+        player_controller.stat.GOLD = Manager.BACKENDGAMEDATA.UserData.gold;
+        player_controller.stat.EXP = Manager.BACKENDGAMEDATA.UserData.exp;
+        player_controller.stat.Asked_max_exp = Manager.BACKENDGAMEDATA.UserData.asked_max_exp;
+    }
 }

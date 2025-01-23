@@ -3324,7 +3324,7 @@ MonoBehaviour:
   HpBar: {fileID: 4272219320404055144}
   camera: {fileID: 0}
   slider: {fileID: 0}
-  view_angle: 45
+  view_angle: 60
   view_distance: 10
   attack_distance: 1
   view_layermask:
