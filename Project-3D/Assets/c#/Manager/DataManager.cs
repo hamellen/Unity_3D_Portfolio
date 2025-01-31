@@ -29,7 +29,7 @@ public class StatData {
 public class DataManager 
 {
 
-    public Dictionary<int, Stat> StatDict { get;  set; } = new Dictionary<int, Stat>();
+  
 
     public List<IMAGE_ITEM> image_item_list = new List<IMAGE_ITEM>();
     public List<D3_ITEM> d3_item_list = new List<D3_ITEM>();
@@ -38,15 +38,7 @@ public class DataManager
     public Monster_Stat warrior_stat;
     public void Init()
     {
-        TextAsset asset=Manager.RESOURCES.Load<TextAsset>($"Data/MonsterStat");
-        Debug.Log(asset.text);
-        StatData data = JsonUtility.FromJson<StatData>(asset.text);
-
-        foreach (Stat stat in data.stats) { //µñ¼Å³Ê¸®¿¡ µ¥ÀÌÅÍ »ğÀÔ°úÁ¤
-
-            StatDict.Add(stat.index, stat);
-            //Debug.Log($"{stat.index}");
-        }
+       
 
         image_item_list.Add(Manager.RESOURCES.Load<IMAGE_ITEM>("Scriptable/consume/Normal_Healing"));
         image_item_list.Add(Manager.RESOURCES.Load<IMAGE_ITEM>("Scriptable/consume/Rare_Healing"));

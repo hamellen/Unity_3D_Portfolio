@@ -5,7 +5,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Player_stat", menuName = "Scriptable/Player_stat")]
 
-public class Player_Stat1 : ScriptableObject
+public class Player_Stat1 : ScriptableObject//플레이어 스탯
 {
     public int LEVEL;
     public float HP;

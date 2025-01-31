@@ -20,9 +20,9 @@ public class Manager : MonoBehaviour
      DataManager dataManager = new DataManager();//데이터 보관
     ItemManager itemManager = new ItemManager();//실질적 아이템 현황
     TokenManager tokenManager = new TokenManager();//UniTask 중단 설정
-    BackendManager backendManager = new BackendManager();
-    BackendLogin backendLogin = new BackendLogin();
-    BackendGameData backend_gamedata = new BackendGameData();
+    BackendManager backendManager = new BackendManager();//뒤끝 매니저 초기화
+    BackendLogin backendLogin = new BackendLogin();//뒤끝 로그인
+    BackendGameData backend_gamedata = new BackendGameData();//데이터베이스로부터의 정보 수신
     //public PlayerController playerController;
 
     public static DataManager DATAMANAGER { get { return manager.dataManager; } }
@@ -55,15 +55,11 @@ public class Manager : MonoBehaviour
 
        
 
-        //Debug.Log($"ITEM DATABASE COUNT:{manager.dataManager.image_item_list.Count}");
+        
 
     }
 
-    private void OnEnable()
-    {
-        //playerinput.Enable();
-    }
-
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -75,7 +71,7 @@ public class Manager : MonoBehaviour
         }
 
        
-        //playerController = FindObjectOfType<PlayerController>();
+       
     }
 
     // Update is called once per frame

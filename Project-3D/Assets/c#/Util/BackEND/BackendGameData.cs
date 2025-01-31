@@ -48,7 +48,7 @@ public class BackendGameData
         userdata.level = 1;
         userdata.hp = 100.0f;
         userdata.MaxHp = 100.0f;
-        userdata.atk = 20;
+        userdata.atk = 40;
         userdata.defence = 5;
         userdata.speed = 5;
         userdata.gold = 100;
@@ -125,9 +125,9 @@ public class BackendGameData
 
                 userdata.count_weapon = int.Parse(gameDataJson[0]["count_weapon"].ToString());
                 userdata.count_armor = int.Parse(gameDataJson[0]["count_armor"].ToString());
-                //userdata.list_consum = List.Parse(gameDataJson[0]["count_armor"].ToString());//소비품 불러오기
+                
 
-                for (int i = 0; i < 3; i++) {//소비재 상품 불러오기 
+                for (int i = 0; i < gameDataJson[0]["list_consum"].Count; i++) {//소비재 상품 불러오기 
 
                     userdata.list_consum.Add( int.Parse(gameDataJson[0]["list_consum"][i].ToString()));
                 }
@@ -189,7 +189,7 @@ public class BackendGameData
     }
 
 
-    public void GameDataUpdate()
+    public void GameDataUpdate()//클라이언트에서의 변경사항이 데이터베이스에 실시간 반영
     {
         if (userdata == null)
         {
