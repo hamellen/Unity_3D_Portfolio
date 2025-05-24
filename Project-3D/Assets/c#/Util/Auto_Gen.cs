@@ -6,14 +6,14 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class Auto_Gen : MonoBehaviour
+public class Auto_Gen : MonoBehaviour//자동 생성
 {
-    public GameObject spawn_prefab;
-    public int current_object;
-    public int max_object;
-    public int spawn_intarval;
+    public GameObject spawn_prefab;//생성할 프리팹
+    public int current_object;//현재 생성된 오브젝트 갯수
+    public int max_object;//최대 갯수
+    public int spawn_intarval;//스폰 간격
 
-    CancellationTokenSource cts;
+    CancellationTokenSource cts;//UniTask 통제를 위한 토큰
 
     public Queue<GameObject> spawn_list=new Queue<GameObject>();
     // Start is called before the first frame update
@@ -38,7 +38,7 @@ public class Auto_Gen : MonoBehaviour
 
             Manager.TOKENMANAGER.RefreshToken(ref cts);//중지
             await UniTask.WaitUntil(()=> spawn_list.Count < max_object);
-            Generate_Prefab().Forget();
+            Generate_Prefab().Forget();//프리팹 생성 재개
         }
     }
 

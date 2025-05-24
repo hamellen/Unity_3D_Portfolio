@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391853874245745281}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.070078775, y: -0.00000008720786, z: 0.0000000061264815, w: 0.9975415}
+  m_LocalRotation: {x: 0.07007885, y: 0, z: 0, w: 0.9975415}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -391,7 +391,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2030849581480549637}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.023637822, y: -0.00000008739837, z: 0.000000002066484, w: 0.99972063}
+  m_LocalRotation: {x: 0.023637833, y: 0, z: 0, w: 0.99972063}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -597,7 +597,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6936870649866019397}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.04682067, y: -0.0000000873269, z: 0.000000004093193, w: 0.99890333}
+  m_LocalRotation: {x: 0.046820678, y: 0, z: 0, w: 0.99890333}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -831,14 +831,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 760107259577143015}
     m_Modifications:
     - target: {fileID: 262509346482907907, guid: ec9b9c51792c2194e9963decd6e4262b, type: 3}
-      propertyPath: heal_sfx
-      value: 
-      objectReference: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
-    - target: {fileID: 262509346482907907, guid: ec9b9c51792c2194e9963decd6e4262b, type: 3}
-      propertyPath: attack_sfx
-      value: 
-      objectReference: {fileID: 8300000, guid: f11db4559b3ffff45b62e9327fc5535d, type: 3}
-    - target: {fileID: 262509346482907907, guid: ec9b9c51792c2194e9963decd6e4262b, type: 3}
       propertyPath: free_camera
       value: 
       objectReference: {fileID: 4116521494027884373}
@@ -886,8 +878,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: AcquireChan
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7446248064216658212, guid: ec9b9c51792c2194e9963decd6e4262b, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

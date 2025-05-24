@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Device;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static Slot_con;
 
-public class Slot_con : MonoBehaviour
+public class Slot_con : MonoBehaviour, IPointerDownHandler
 {
     
 
@@ -29,6 +31,11 @@ public class Slot_con : MonoBehaviour
         figure_count.text = $"{itemdata.count}";
     }
 
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Use();
+
+    }
     public void Active() {
 
         con_image.enabled = true;
